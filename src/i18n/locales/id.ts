@@ -90,4 +90,10 @@ export const id: Messages = {
   shareOn: 'Bagikan di {network}',
   copyLink: 'Salin tautan',
   linkCopied: 'Tautan disalin',
+
+  cookiesTitle: 'Cookie',
+  cookiesText: 'Kami memakai cookie agar situs berfungsi dan untuk mengukur penggunaannya.',
+  cookiesPolicy: 'Privasi dan data',
+  cookiesNecessary: 'Hanya yang diperlukan',
+  cookiesAccept: 'Terima',
 };

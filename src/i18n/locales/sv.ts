@@ -90,4 +90,10 @@ export const sv: Messages = {
   shareOn: 'Dela på {network}',
   copyLink: 'Kopiera länk',
   linkCopied: 'Länk kopierad',
+
+  cookiesTitle: 'Cookies',
+  cookiesText: 'Vi använder cookies för att webbplatsen ska fungera och för att mäta hur den används.',
+  cookiesPolicy: 'Integritet och data',
+  cookiesNecessary: 'Endast nödvändiga',
+  cookiesAccept: 'Godkänn',
 };

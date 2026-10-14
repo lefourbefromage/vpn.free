@@ -90,4 +90,10 @@ export const pt: Messages = {
   shareOn: 'Compartilhar no {network}',
   copyLink: 'Copiar link',
   linkCopied: 'Link copiado',
+
+  cookiesTitle: 'Cookies',
+  cookiesText: 'Usamos cookies para o site funcionar e para medir como ele é usado.',
+  cookiesPolicy: 'Privacidade e dados',
+  cookiesNecessary: 'Apenas o necessário',
+  cookiesAccept: 'Aceitar',
 };

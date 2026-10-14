@@ -98,6 +98,13 @@ export const en = {
   shareOn: 'Share on {network}',
   copyLink: 'Copy link',
   linkCopied: 'Link copied',
+
+  // Cookie banner
+  cookiesTitle: 'Cookies',
+  cookiesText: "We use cookies to make the site work and to measure how it's used.",
+  cookiesPolicy: 'Privacy and data',
+  cookiesNecessary: 'Necessary only',
+  cookiesAccept: 'Accept',
 };
 
 export type MessageKey = keyof typeof en;

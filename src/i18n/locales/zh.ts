@@ -90,4 +90,10 @@ export const zh: Messages = {
   shareOn: '分享到 {network}',
   copyLink: '复制链接',
   linkCopied: '链接已复制',
+
+  cookiesTitle: 'Cookie',
+  cookiesText: '我们使用 Cookie 来维持网站运行并统计使用情况。',
+  cookiesPolicy: '隐私与数据',
+  cookiesNecessary: '仅必要',
+  cookiesAccept: '接受',
 };

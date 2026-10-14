@@ -90,4 +90,10 @@ export const ar: Messages = {
   shareOn: 'مشاركة على {network}',
   copyLink: 'نسخ الرابط',
   linkCopied: 'تم نسخ الرابط',
+
+  cookiesTitle: 'ملفات تعريف الارتباط',
+  cookiesText: 'نستخدم ملفات تعريف الارتباط لتشغيل الموقع وقياس استخدامه.',
+  cookiesPolicy: 'الخصوصية والبيانات',
+  cookiesNecessary: 'الضرورية فقط',
+  cookiesAccept: 'قبول',
 };

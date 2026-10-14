@@ -19,6 +19,8 @@ body {
   line-height: normal;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
+  /* Height of the cookie banner while it is shown (set by CookieBanner). */
+  padding-bottom: var(--cookie-bar, 0px);
 }
 
 h1,

@@ -90,4 +90,10 @@ export const fa: Messages = {
   shareOn: 'هم‌رسانی در {network}',
   copyLink: 'کپی پیوند',
   linkCopied: 'پیوند کپی شد',
+
+  cookiesTitle: 'کوکی‌ها',
+  cookiesText: 'ما از کوکی‌ها برای کارکرد سایت و سنجش نحوهٔ استفاده از آن استفاده می‌کنیم.',
+  cookiesPolicy: 'حریم خصوصی و داده‌ها',
+  cookiesNecessary: 'فقط موارد ضروری',
+  cookiesAccept: 'پذیرفتن',
 };
