@@ -5,6 +5,8 @@ export const en = {
   home: 'vpn.free home',
   signIn: 'Sign in',
   supportCta: 'Support vpn.free',
+  forum: 'Forum',
+  discord: 'Discord',
   menu: 'Menu',
 
   // Hero

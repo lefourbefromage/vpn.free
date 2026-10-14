@@ -3,29 +3,31 @@ import { Icon } from '../../components/Icon';
 import { LogoSymbol } from '../../components/Logo';
 import { stagger } from '../../hooks';
 import styles from './Community.module.css';
+import { useT } from '../../i18n';
 
 const CHANNELS = ['announcements', 'help', 'site-requests', 'off-topic'];
 
 export function Community() {
+  const t = useT();
   return (
     <section id="community" aria-labelledby="community-title" className={styles.section}>
       <div className={styles.grid}>
         <div className={styles.text}>
           <span className={styles.chip} data-reveal>
             <Icon name="discord" size={15} />
-            Now on Discord
+            {t('nowOnDiscord')}
           </span>
           <h2 id="community-title" className={styles.title} data-reveal style={stagger(1)}>
-            Join the <span className="lilac">community.</span>
+            {t('communityTitle')} <span className="lilac">{t('communityAccent')}</span>
           </h2>
           <p className={styles.lead} data-reveal style={stagger(2)}>
-            Get help, tell us which sites to fix, and hear about new features first.
+            {t('communityLead')}
           </p>
         </div>
 
         <div className={styles.cta} data-reveal style={stagger(3)}>
           <ButtonAnchor href="#discord" variant="discord" size="xl" className={styles.discordBtn}>
-            Join our Discord
+            {t('joinDiscord')}
             <Icon name="arrowRight" size={18} strokeWidth={2.2} />
           </ButtonAnchor>
         </div>
@@ -60,7 +62,7 @@ export function Community() {
                   <span className={styles.msgName}>mika</span>
                   <span className={`mono ${styles.msgTime}`}>10:42</span>
                 </span>
-                <span className={styles.msgText}>thedailylens.com shows a blank page through Paris.</span>
+                <span className={styles.msgText}>{t('discordMsg1')}</span>
               </div>
             </div>
             <div className={styles.msg}>
@@ -73,14 +75,14 @@ export function Community() {
                   <span className={styles.team}>TEAM</span>
                   <span className={`mono ${styles.msgTime}`}>10:58</span>
                 </span>
-                <span className={styles.msgText}>Thanks! Fixed in today's update.</span>
+                <span className={styles.msgText}>{t('discordMsg2')}</span>
               </div>
             </div>
           </div>
 
           <div className={styles.news}>
             <span className={styles.newsDot} />
-            Get the news here first
+            {t('newsFirst')}
           </div>
         </div>
       </div>

@@ -91,7 +91,6 @@ function LangList({ value, onChoose, label, roomy }: { value: string; onChoose: 
             aria-selected={selected}
             tabIndex={selected ? 0 : -1}
             lang={l.code}
-            dir={l.dir}
             className={`${styles.option} ${selected ? styles.selected : ''}`}
             onClick={() => onChoose(l.code)}
           >

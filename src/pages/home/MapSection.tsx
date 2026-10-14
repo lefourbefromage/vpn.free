@@ -6,6 +6,7 @@ import { SERVERS, autoServer, getServer, getVisitor } from '../../data/servers';
 import { useProto } from '../../state/proto';
 import { useIsMobile } from '../../hooks';
 import styles from './MapSection.module.css';
+import { useT } from '../../i18n';
 
 /**
  * The map under the hero. Paris is the free server (Automatic).
@@ -16,6 +17,7 @@ import styles from './MapSection.module.css';
  */
 export function MapSection({ serverId, supporter }: { serverId: string | null; supporter: boolean }) {
   const isMobile = useIsMobile();
+  const t = useT();
   const visitor = getVisitor(useProto().state.visitorId);
   const size = isMobile ? 'mobile' : 'desktop';
   const picked = getServer(serverId);
@@ -33,16 +35,16 @@ export function MapSection({ serverId, supporter }: { serverId: string | null; s
         kind: 'outline',
         tooltipTone: 'lilac',
         tooltip: isMobile ? (
-          <TooltipLines value={targetLabel} note="Supporter location" />
+          <TooltipLines value={targetLabel} note={t('supporterLocation')} />
         ) : (
           <>
             <TooltipLines value={targetLabel} />
             <span className={styles.locked}>
               <Icon name="star" size={12} className="lilac" />
-              Available for supporters
+              {t('forSupporters')}
             </span>
             <Link to="/support">
-              Support vpn.free
+              {t('supportCta')}
               <Icon name="arrowRight" size={14} />
             </Link>
           </>
@@ -52,14 +54,14 @@ export function MapSection({ serverId, supporter }: { serverId: string | null; s
         lat: target.lat,
         lon: target.lon,
         kind: 'star',
-        tooltip: <TooltipLines label="Sites see" value={targetLabel} />,
+        tooltip: <TooltipLines label={t('sitesSee')} value={targetLabel} />,
       };
 
   const visitorMarker: MapMarker = {
     lat: visitor.lat,
     lon: visitor.lon,
     kind: 'dot',
-    tooltip: <TooltipLines label="Your location" value={`${visitor.city}, ${visitor.country}`} note="approx., from your IP" />,
+    tooltip: <TooltipLines label={t('yourLocation')} value={`${visitor.city}, ${visitor.country}`} note={t('approxIp')} />,
   };
 
   const origin = crossBorder ? visitorMarker : targetMarker;
@@ -71,17 +73,17 @@ export function MapSection({ serverId, supporter }: { serverId: string | null; s
     <div className={styles.protected}>
       <LogoSymbol size={isMobile ? 34 : 36} />
       <div>
-        <div className={styles.protectedTitle}>Protected</div>
-        <div className={styles.protectedSub}>Your traffic leaves from {exit.city}</div>
+        <div className={styles.protectedTitle}>{t('protected')}</div>
+        <div className={styles.protectedSub}>{t('trafficFrom', { city: exit.city })}</div>
       </div>
     </div>
   );
 
   return (
-    <section aria-label="How your connection travels" className={styles.section}>
+    <section aria-label={t('mapLabel')} className={styles.section}>
       <p className="sr-only">
-        Sites see {exit.city}, {exit.country}.
-        {locked && ` ${picked!.city} is available for supporters.`}
+        {t('srSitesSee', { place: `${exit.city}, ${exit.country}` })}
+        {locked && ` ${t('srLocked', { city: picked!.city })}`}
       </p>
       <div className={styles.viewport}>
         <DotMap size={size} pins={pins} origin={origin} destination={destination}>
@@ -95,11 +97,11 @@ export function MapSection({ serverId, supporter }: { serverId: string | null; s
             <div className={styles.lockedCard}>
               <div className={styles.lockedTitle}>
                 <Icon name="star" size={14} className="lilac" />
-                Available for supporters
+                {t('forSupporters')}
               </div>
-              <p>Until then you keep browsing through {autoServer.city}, free and unlimited.</p>
+              <p>{t('lockedBody', { city: autoServer.city })}</p>
               <Link to="/support" className={styles.lockedLink}>
-                Support vpn.free
+                {t('supportCta')}
                 <Icon name="arrowRight" size={15} />
               </Link>
             </div>

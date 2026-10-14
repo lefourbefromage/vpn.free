@@ -4,6 +4,8 @@ export const fa: Messages = {
   home: 'صفحهٔ اصلی vpn.free',
   signIn: 'ورود',
   supportCta: 'حمایت از vpn.free',
+  forum: 'انجمن',
+  discord: 'Discord',
   menu: 'منو',
 
   heroTitle: 'هر سایتی را باز کنید',

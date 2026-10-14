@@ -4,6 +4,8 @@ export const de: Messages = {
   home: 'vpn.free Startseite',
   signIn: 'Anmelden',
   supportCta: 'vpn.free unterstützen',
+  forum: 'Forum',
+  discord: 'Discord',
   menu: 'Menü',
 
   heroTitle: 'Öffne jede Website',

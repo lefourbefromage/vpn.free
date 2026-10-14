@@ -13,6 +13,7 @@ import { MapSection } from './MapSection';
 import { Promises } from './Promises';
 import { SupportBlock } from './SupportBlock';
 import styles from './Home.module.css';
+import { useT } from '../../i18n';
 
 /** Strips the scheme and trailing slash so the address reads like the mockups. */
 export function displayAddress(raw: string) {
@@ -30,6 +31,7 @@ export function Home({ backdrop, backdropUrl }: HomeProps) {
   const [params, setParams] = useSearchParams();
   const navigate = useNavigate();
   const ref = useReveal<HTMLDivElement>();
+  const t = useT();
 
   const [url, setUrl] = useState(backdropUrl ?? '');
   const [error, setError] = useState<string>();
@@ -61,8 +63,8 @@ export function Home({ backdrop, backdropUrl }: HomeProps) {
     e?.preventDefault();
     const errors = resolveSubmit(
       state.formOutcome,
-      () => ({ url: url.trim() ? undefined : 'Type a website address, or what you want to search for.' }),
-      { url: "We couldn't reach this address. Check the spelling, or try again in a moment." },
+      () => ({ url: url.trim() ? undefined : t('urlEmpty') }),
+      { url: t('urlServer') },
     );
     if (errors.url) {
       setError(errors.url);
@@ -93,14 +95,14 @@ export function Home({ backdrop, backdropUrl }: HomeProps) {
       <section aria-labelledby="hero-title" className={styles.hero}>
         <div aria-hidden="true" className={styles.heroGlow} />
         <h1 id="hero-title" className={styles.title}>
-          Open any website <span className={styles.titleAccent}>without installing anything.</span>
+          {t('heroTitle')} <span className={styles.titleAccent}>{t('heroAccent')}</span>
         </h1>
-        <p className={styles.lead}>Right in your browser, no account. Sites see our server, not you.</p>
+        <p className={styles.lead}>{t('heroLead')}</p>
 
         <form role="search" className={`${styles.search} ${error ? styles.searchInvalid : ''}`} onSubmit={go} noValidate>
           <Icon name="globe" size={22} className={styles.searchGlobe} />
           <label htmlFor="url-main" className="sr-only">
-            Website address or search
+            {t('urlLabel')}
           </label>
           <input
             id="url-main"
@@ -108,7 +110,7 @@ export function Home({ backdrop, backdropUrl }: HomeProps) {
             inputMode="url"
             autoComplete="off"
             spellCheck={false}
-            placeholder="Enter a URL or search"
+            placeholder={t('urlPlaceholder')}
             value={url}
             onChange={(e) => {
               setUrl(e.target.value);
@@ -119,7 +121,7 @@ export function Home({ backdrop, backdropUrl }: HomeProps) {
             className={styles.searchInput}
           />
           <button type="submit" className={styles.go}>
-            Go
+            {t('go')}
             <Icon name="arrowRight" size={18} className={styles.goArrow} />
           </button>
         </form>
