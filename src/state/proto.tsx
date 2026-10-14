@@ -16,6 +16,8 @@ import {
 export type Plan = 'monthly' | 'yearly';
 export type FormOutcome = 'auto' | 'success' | 'error';
 export type LoadingMode = 'normal' | 'slow' | 'paused';
+/** Answer to the cookie banner. null = not answered yet, the banner shows. */
+export type CookieChoice = 'necessary' | 'all' | null;
 
 export interface Order {
   plan: Plan;
@@ -43,6 +45,7 @@ export interface ProtoState {
   lang: string;
   /** Fictional IP-based location of the visitor. */
   visitorId: string;
+  cookies: CookieChoice;
 }
 
 export const PLANS: Record<Plan, { label: string; price: number; days: number }> = {
@@ -64,6 +67,7 @@ const DEFAULT_STATE: ProtoState = {
   dir: 'ltr',
   lang: 'en',
   visitorId: 'marseille',
+  cookies: null,
 };
 
 const STORAGE_KEY = 'vpnfree-proto-v1';

@@ -90,4 +90,15 @@ export const id: Messages = {
   shareOn: 'Bagikan di {network}',
   copyLink: 'Salin tautan',
   linkCopied: 'Tautan disalin',
+
+  cookiesTitle: 'Cookie',
+  cookiesText: 'Kami memakai cookie agar situs berfungsi dan untuk mengukur penggunaannya.',
+  cookiesPolicy: 'Privasi dan data',
+  cookiesNecessary: 'Hanya yang diperlukan',
+  cookiesAccept: 'Terima',
+
+  close: 'Tutup',
+  gateTitle: 'Jelajahi dari {city} sebagai pendukung',
+  gateBody: 'Memilih lokasi adalah ucapan terima kasih untuk pendukung. Tanpa itu, kunjungan Anda lewat {city}, gratis dan tanpa batas.',
+  gateContinue: 'Lanjut lewat {city}',
 };

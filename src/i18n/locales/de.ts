@@ -90,4 +90,15 @@ export const de: Messages = {
   shareOn: 'Auf {network} teilen',
   copyLink: 'Link kopieren',
   linkCopied: 'Link kopiert',
+
+  cookiesTitle: 'Cookies',
+  cookiesText: 'Wir verwenden Cookies, damit die Website funktioniert, und um ihre Nutzung zu messen.',
+  cookiesPolicy: 'Datenschutz und Daten',
+  cookiesNecessary: 'Nur notwendige',
+  cookiesAccept: 'Akzeptieren',
+
+  close: 'Schließen',
+  gateTitle: 'Als Unterstützer über {city} surfen',
+  gateBody: 'Einen Standort zu wählen ist ein Dankeschön für Unterstützer. Ohne Unterstützung läuft dein Besuch über {city}, kostenlos und unbegrenzt.',
+  gateContinue: 'Weiter über {city}',
 };

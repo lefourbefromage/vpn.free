@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Icon } from '../components/Icon';
 import { useToast } from '../components/Toast';
-import { expiryFor, useProto, type FormOutcome, type LoadingMode } from '../state/proto';
+import { expiryFor, useProto, type CookieChoice, type FormOutcome, type LoadingMode } from '../state/proto';
 import { VISITORS } from '../data/servers';
 import { SCREEN_GROUPS } from './screens';
 import styles from './ProtoOverlay.module.css';
@@ -132,6 +132,17 @@ export function ProtoOverlay() {
                       {l.label}
                     </option>
                   ))}
+                </select>
+              </div>
+              <div className={styles.row}>
+                <span>Cookie banner</span>
+                <select
+                  value={state.cookies ?? 'unset'}
+                  onChange={(e) => update({ cookies: e.target.value === 'unset' ? null : (e.target.value as CookieChoice) })}
+                >
+                  <option value="unset">Not answered (shown)</option>
+                  <option value="necessary">Necessary only</option>
+                  <option value="all">Accepted</option>
                 </select>
               </div>
               <button

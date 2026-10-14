@@ -5,13 +5,14 @@ import { Header } from '../../components/Header';
 import { Icon } from '../../components/Icon';
 import { ServerPicker } from '../../components/ServerPicker';
 import { FieldError } from '../../components/ui';
-import { getServer } from '../../data/servers';
+import { autoServer, getServer } from '../../data/servers';
 import { useReveal } from '../../hooks';
 import { resolveSubmit, useProto, useProtoActions } from '../../state/proto';
 import { Community } from './Community';
 import { MapSection } from './MapSection';
 import { Promises } from './Promises';
 import { SupportBlock } from './SupportBlock';
+import { SupporterGate } from './SupporterGate';
 import styles from './Home.module.css';
 import { useT } from '../../i18n';
 
@@ -35,6 +36,8 @@ export function Home({ backdrop, backdropUrl }: HomeProps) {
 
   const [url, setUrl] = useState(backdropUrl ?? '');
   const [error, setError] = useState<string>();
+  /** Address waiting for the visitor's answer in the supporter gate. */
+  const [gated, setGated] = useState<string | null>(null);
 
   // Deep links: /?server=new-york selects a city, /?servers=open opens the menu.
   const paramServer = params.get('server');
@@ -72,8 +75,19 @@ export function Home({ backdrop, backdropUrl }: HomeProps) {
     }
     setError(undefined);
     const target = displayAddress(url) || 'thedailylens.com';
+    // A supporter city without supporter access: ask before connecting, never switch silently.
+    if (lockedCity) {
+      setGated(target);
+      return;
+    }
+    connect(target);
+  }
+
+  function connect(target: string) {
     navigate(`/connecting?url=${encodeURIComponent(target)}`);
   }
+
+  const lockedCity = state.supporter ? null : getServer(state.serverId)?.city ?? null;
 
   useProtoActions(
     'Homepage',
@@ -147,6 +161,18 @@ export function Home({ backdrop, backdropUrl }: HomeProps) {
       <SupportBlock />
       <Community />
       <Footer />
+
+      {gated !== null && lockedCity && (
+        <SupporterGate
+          city={lockedCity}
+          autoCity={autoServer.city}
+          onClose={() => setGated(null)}
+          onContinue={() => {
+            update({ serverId: null });
+            connect(gated);
+          }}
+        />
+      )}
     </div>
   );
 }

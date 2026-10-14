@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import { CookieBanner } from './components/CookieBanner';
 import { Changelog } from './pages/Changelog';
 import { Home } from './pages/home/Home';
 import { Loading } from './pages/Loading';
@@ -57,6 +58,7 @@ export function App() {
         <Route path="/screens" element={<ScreensIndex />} />
         <Route path="*" element={<ScreensIndex notFound />} />
       </Routes>
+      <CookieBanner />
       <ProtoOverlay />
     </>
   );

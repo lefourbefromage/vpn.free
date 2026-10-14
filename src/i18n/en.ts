@@ -98,6 +98,19 @@ export const en = {
   shareOn: 'Share on {network}',
   copyLink: 'Copy link',
   linkCopied: 'Link copied',
+
+  // Cookie banner
+  cookiesTitle: 'Cookies',
+  cookiesText: "We use cookies to make the site work and to measure how it's used.",
+  cookiesPolicy: 'Privacy and data',
+  cookiesNecessary: 'Necessary only',
+  cookiesAccept: 'Accept',
+
+  // Supporter city gate (URL form)
+  close: 'Close',
+  gateTitle: 'Browse from {city} as a supporter',
+  gateBody: 'Picking a location is a thank-you for supporters. Without it, your visit goes through {city}, free and unlimited.',
+  gateContinue: 'Continue via {city}',
 };
 
 export type MessageKey = keyof typeof en;

@@ -2,7 +2,7 @@
   position: fixed;
   z-index: 90;
   inset-inline: 0;
-  bottom: 24px;
+  bottom: calc(24px + var(--cookie-bar, 0px));
   display: flex;
   flex-direction: column;
   align-items: center;

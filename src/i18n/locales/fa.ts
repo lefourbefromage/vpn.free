@@ -90,4 +90,15 @@ export const fa: Messages = {
   shareOn: 'هم‌رسانی در {network}',
   copyLink: 'کپی پیوند',
   linkCopied: 'پیوند کپی شد',
+
+  cookiesTitle: 'کوکی‌ها',
+  cookiesText: 'ما از کوکی‌ها برای کارکرد سایت و سنجش نحوهٔ استفاده از آن استفاده می‌کنیم.',
+  cookiesPolicy: 'حریم خصوصی و داده‌ها',
+  cookiesNecessary: 'فقط موارد ضروری',
+  cookiesAccept: 'پذیرفتن',
+
+  close: 'بستن',
+  gateTitle: 'از {city} به‌عنوان حامی مرور کنید',
+  gateBody: 'انتخاب مکان، قدردانی از حامیان است. در غیر این صورت، بازدید شما رایگان و نامحدود از {city} عبور می‌کند.',
+  gateContinue: 'ادامه از طریق {city}',
 };

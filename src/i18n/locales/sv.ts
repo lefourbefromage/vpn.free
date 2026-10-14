@@ -90,4 +90,15 @@ export const sv: Messages = {
   shareOn: 'Dela på {network}',
   copyLink: 'Kopiera länk',
   linkCopied: 'Länk kopierad',
+
+  cookiesTitle: 'Cookies',
+  cookiesText: 'Vi använder cookies för att webbplatsen ska fungera och för att mäta hur den används.',
+  cookiesPolicy: 'Integritet och data',
+  cookiesNecessary: 'Endast nödvändiga',
+  cookiesAccept: 'Godkänn',
+
+  close: 'Stäng',
+  gateTitle: 'Surfa från {city} som supporter',
+  gateBody: 'Att välja plats är ett tack till supporters. Annars går ditt besök via {city}, gratis och obegränsat.',
+  gateContinue: 'Fortsätt via {city}',
 };

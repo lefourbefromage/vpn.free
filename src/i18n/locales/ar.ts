@@ -90,4 +90,15 @@ export const ar: Messages = {
   shareOn: 'مشاركة على {network}',
   copyLink: 'نسخ الرابط',
   linkCopied: 'تم نسخ الرابط',
+
+  cookiesTitle: 'ملفات تعريف الارتباط',
+  cookiesText: 'نستخدم ملفات تعريف الارتباط لتشغيل الموقع وقياس استخدامه.',
+  cookiesPolicy: 'الخصوصية والبيانات',
+  cookiesNecessary: 'الضرورية فقط',
+  cookiesAccept: 'قبول',
+
+  close: 'إغلاق',
+  gateTitle: 'تصفّح من {city} كداعم',
+  gateBody: 'اختيار الموقع ميزة شكر للداعمين. بدونها، تمر زيارتك عبر {city}، مجانًا وبلا حدود.',
+  gateContinue: 'المتابعة عبر {city}',
 };
