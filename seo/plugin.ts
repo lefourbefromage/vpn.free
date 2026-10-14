@@ -66,7 +66,7 @@ const withTags = (html: string, page: SeoPage) => {
  * Writes each page's title, description, Open Graph and Twitter tags into the HTML.
  * index.html gets the homepage's; the other shareable pages get their own copy of it
  * (dist/support.html…), which vercel.json serves for that page and every route under it.
- * Also writes sitemap.xml.
+ * Also writes sitemap.xml and robots.txt.
  */
 export function seo(): Plugin {
   let config: ResolvedConfig;
@@ -88,6 +88,10 @@ export function seo(): Plugin {
       await writeFile(
         join(outDir, 'sitemap.xml'),
         `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
+      );
+      await writeFile(
+        join(outDir, 'robots.txt'),
+        `User-agent: *\nDisallow: /screens\n\nSitemap: ${SITE_URL}/sitemap.xml\n`,
       );
     },
   };
