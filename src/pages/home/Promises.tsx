@@ -3,28 +3,30 @@ import { Icon } from '../../components/Icon';
 import { stagger } from '../../hooks';
 import { SectionHeading } from './SectionHeading';
 import styles from './Promises.module.css';
+import { useT } from '../../i18n';
 
 /* "Three promises" — 3 cards with a small illustrated UI on a dotted well.
    No section background on purpose: no frame inside a frame. */
 
 export function Promises() {
+  const t = useT();
   return (
     <section aria-labelledby="promises-title" className={styles.section}>
       <div className={styles.inner}>
         <SectionHeading
           id="promises-title"
-          title="Three promises."
-          accent="No fine print."
-          lead="What vpn.free does, said plainly. Nothing more is promised."
+          title={t('promisesTitle')}
+          accent={t('promisesAccent')}
+          lead={t('promisesLead')}
         />
         <div className={styles.grid}>
-          <PromiseCard i={0} title="Fast" text="Servers in Europe and the Americas. Automatic picks the closest one for you.">
+          <PromiseCard i={0} title={t('fast')} text={t('fastText')}>
             <FastArt />
           </PromiseCard>
-          <PromiseCard i={1} title="Safe" text="Links shared through vpn.free are checked against malware lists before they open.">
+          <PromiseCard i={1} title={t('safe')} text={t('safeText')}>
             <SafeArt />
           </PromiseCard>
-          <PromiseCard i={2} title="Private" text="Sites see our server's address. Not yours.">
+          <PromiseCard i={2} title={t('private')} text={t('privateText')}>
             <PrivateArt />
           </PromiseCard>
         </div>
@@ -49,6 +51,7 @@ function PromiseCard({ i, title, text, children }: { i: number; title: string; t
 }
 
 function FastArt() {
+  const t = useT();
   const rows = [
     { city: 'Frankfurt', cc: 'DE', o: 0.85 },
     { city: 'London', cc: 'GB', o: 0.6 },
@@ -58,12 +61,12 @@ function FastArt() {
     <div className={styles.menu}>
       <div className={styles.menuHead}>
         <Icon name="star" size={12} className="lilac" />
-        Automatic — fastest
+        {t('automatic')}
       </div>
       <div className={styles.menuActive}>
         <span className={styles.dotOn} />
         <span className={styles.menuCity}>Paris</span>
-        <span className={styles.closest}>Closest</span>
+        <span className={styles.closest}>{t('closest')}</span>
         <span className={`mono ${styles.cc}`}>FR</span>
       </div>
       {rows.map((r) => (
@@ -78,6 +81,7 @@ function FastArt() {
 }
 
 function SafeArt() {
+  const t = useT();
   return (
     <div className={styles.links}>
       <div className={styles.linkCard}>
@@ -87,7 +91,7 @@ function SafeArt() {
         </div>
         <span className={`${styles.pill} ${styles.pillOk}`}>
           <Icon name="shieldCheck" size={12} strokeWidth={2.2} />
-          Checked · clean
+          {t('checkedClean')}
         </span>
       </div>
       <div className={`${styles.linkCard} ${styles.linkBad}`}>
@@ -97,7 +101,7 @@ function SafeArt() {
         </div>
         <span className={`${styles.pill} ${styles.pillBad}`}>
           <Icon name="blocked" size={12} />
-          On a malware list · blocked
+          {t('malwareBlocked')}
         </span>
       </div>
     </div>
@@ -105,12 +109,13 @@ function SafeArt() {
 }
 
 function PrivateArt() {
+  const t = useT();
   return (
     <div className={styles.route}>
       <div className={`${styles.hop} ${styles.hopYou}`}>
         <Icon name="eyeOff" size={16} />
         <div className={styles.hopText}>
-          <span className={styles.hopLabel}>Your IP</span>
+          <span className={styles.hopLabel}>{t('yourIp')}</span>
           <span className={`mono ${styles.hopValue}`}>••.•••.•••.••</span>
         </div>
       </div>
@@ -122,7 +127,7 @@ function PrivateArt() {
       <div className={`${styles.hop} ${styles.hopServer}`}>
         <Icon name="globe" size={16} strokeWidth={1.9} />
         <div className={styles.hopText}>
-          <span className={styles.hopLabel}>Sites see</span>
+          <span className={styles.hopLabel}>{t('sitesSee')}</span>
           <span className={`mono ${styles.hopValue}`}>Paris, FR · PAR-03</span>
         </div>
       </div>

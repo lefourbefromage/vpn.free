@@ -4,6 +4,8 @@ export const zh: Messages = {
   home: 'vpn.free 首页',
   signIn: '登录',
   supportCta: '支持 vpn.free',
+  forum: '论坛',
+  discord: 'Discord',
   menu: '菜单',
 
   heroTitle: '打开任何网站',

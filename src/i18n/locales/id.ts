@@ -4,6 +4,8 @@ export const id: Messages = {
   home: 'Beranda vpn.free',
   signIn: 'Masuk',
   supportCta: 'Dukung vpn.free',
+  forum: 'Forum',
+  discord: 'Discord',
   menu: 'Menu',
 
   heroTitle: 'Buka situs apa pun',

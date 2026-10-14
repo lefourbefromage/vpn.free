@@ -4,6 +4,8 @@ export const tr: Messages = {
   home: 'vpn.free ana sayfa',
   signIn: 'Giriş yap',
   supportCta: "vpn.free'yi destekle",
+  forum: 'Forum',
+  discord: 'Discord',
   menu: 'Menü',
 
   heroTitle: 'Her siteyi aç',

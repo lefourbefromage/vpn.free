@@ -4,6 +4,8 @@ export const ar: Messages = {
   home: 'الصفحة الرئيسية لـ vpn.free',
   signIn: 'تسجيل الدخول',
   supportCta: 'ادعم vpn.free',
+  forum: 'المنتدى',
+  discord: 'Discord',
   menu: 'القائمة',
 
   heroTitle: 'افتح أي موقع',

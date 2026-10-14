@@ -47,3 +47,9 @@ L'état du prototype (plan, commande, accès supporter…) est gardé dans le `l
 
 - L'arc part de la position approximative du visiteur (IP). Destination dans le même pays : pas d'arc. Autre pays : un arc.
 - Paris est le serveur gratuit (Automatic). Une ville choisie sans accès supporter reste « Available for supporters ».
+
+## Partage (Open Graph)
+
+- `seo/pages.mjs` — titre, description et texte de l'image de partage de chaque page partageable (`/`, `/support`, `/changelog`).
+- `npm run og` — régénère les images 1200×630 dans `public/og/` (Satori + resvg, polices Outfit / JetBrains Mono, carte en points). À relancer après avoir changé ce texte.
+- Au build, le plugin `seo/plugin.ts` écrit les balises `<title>`, description, canonical, Open Graph, Twitter et JSON-LD dans `index.html`, en crée une copie par page (`support.html`, `changelog.html`, servies par `vercel.json` pour la page et ses sous-routes) et génère `sitemap.xml`.

@@ -54,16 +54,6 @@
 .lang {
   grid-area: lang;
   justify-self: end;
-  height: 40px;
-  padding: 0 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border-radius: var(--r-control-sm);
-  border: 1px solid var(--border-strong);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 14px;
 }
 .langShort {
   display: none;
@@ -113,13 +103,6 @@
     display: flex;
     align-items: center;
     color: rgba(255, 255, 255, 0.8);
-  }
-  .lang {
-    padding: 0 10px;
-    gap: 6px;
-  }
-  .langLong {
-    display: none;
   }
   .langShort {
     display: inline;

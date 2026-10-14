@@ -5,6 +5,7 @@ import { Icon } from './Icon';
 import { LayerHeader, Popover, Sheet } from './Layer';
 import { Badge } from './ui';
 import styles from './ServerPicker.module.css';
+import { useT } from '../i18n';
 
 interface Props {
   value: string | null;
@@ -22,6 +23,7 @@ export function ServerPicker({ value, open, onOpenChange, onSelect, supporter }:
   const isMobile = useIsMobile();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const server = getServer(value);
+  const t = useT();
 
   const choose = (id: string | null) => {
     onSelect(id);
@@ -31,7 +33,7 @@ export function ServerPicker({ value, open, onOpenChange, onSelect, supporter }:
   const list = <ServerList value={value} onChoose={choose} supporter={supporter} roomy={isMobile} />;
   const note = (
     <p className={styles.note}>
-      Picking a location is a thank-you for supporters. Automatic stays free and unlimited.
+      {t('pickerNote')}
     </p>
   );
 
@@ -49,20 +51,20 @@ export function ServerPicker({ value, open, onOpenChange, onSelect, supporter }:
           <>
             <Icon name="starOutline" size={14} className={styles.pillStar} />
             {server.city}, {server.country}
-            {!supporter && <Badge>Supporter</Badge>}
+            {!supporter && <Badge>{t('supporterBadge')}</Badge>}
           </>
         ) : (
           <>
             <Icon name="star" size={14} className={styles.pillStar} />
-            Automatic — fastest
+            {t('automatic')}
           </>
         )}
         <Icon name={open && !isMobile ? 'chevronUp' : 'chevronDown'} size={16} />
-        <span className="sr-only">, change server location</span>
+        <span className="sr-only">, {t('changeServer')}</span>
       </button>
 
       {open && !isMobile && (
-        <Popover label="Server location" onClose={() => onOpenChange(false)} className={styles.dropdown} anchorRef={triggerRef}>
+        <Popover label={t('serverLocation')} onClose={() => onOpenChange(false)} className={styles.dropdown} anchorRef={triggerRef}>
           {list}
           {note}
         </Popover>
@@ -70,7 +72,7 @@ export function ServerPicker({ value, open, onOpenChange, onSelect, supporter }:
 
       {open && isMobile && (
         <Sheet titleId="server-sheet-title" onClose={() => onOpenChange(false)} className={styles.sheet}>
-          <LayerHeader titleId="server-sheet-title" title="Server location" onClose={() => onOpenChange(false)} big />
+          <LayerHeader titleId="server-sheet-title" title={t('serverLocation')} onClose={() => onOpenChange(false)} big />
           {list}
           {note}
         </Sheet>
@@ -91,6 +93,7 @@ function ServerList({
   roomy: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const t = useT();
 
   // Roving focus between options: ↑ ↓ Home End, Enter/Space selects.
   function onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
@@ -119,7 +122,7 @@ function ServerList({
     <div
       ref={ref}
       role="listbox"
-      aria-label="Server location"
+      aria-label={t('serverLocation')}
       className={`${styles.list} ${roomy ? styles.roomy : ''}`}
       onKeyDown={onKeyDown}
     >
@@ -132,9 +135,9 @@ function ServerList({
       >
         <Icon name="star" size={18} className={styles.autoStar} />
         <span className={styles.autoText}>
-          <span className={styles.autoTitle}>Automatic — fastest</span>
+          <span className={styles.autoTitle}>{t('automatic')}</span>
           <span className={styles.autoSub}>
-            Closest server, right now{' '}
+            {t('closestNow')}{' '}
             <span className="mono">
               {autoServer.city}, {autoServer.country}
             </span>
@@ -147,7 +150,7 @@ function ServerList({
         {REGIONS.map((region) => (
           <div key={region} role="group" aria-labelledby={`region-${region}`}>
             <div id={`region-${region}`} className={styles.region}>
-              {region}
+              {region === 'Europe' ? t('regionEurope') : t('regionAmericas')}
             </div>
             {SERVERS.filter((s) => s.region === region).map((s) => {
               const selected = value === s.id;
@@ -165,7 +168,7 @@ function ServerList({
                   {supporter ? (
                     selected && <Icon name="check" size={16} className={styles.check} />
                   ) : (
-                    <Badge star>Supporter</Badge>
+                    <Badge star>{t('supporterBadge')}</Badge>
                   )}
                 </div>
               );

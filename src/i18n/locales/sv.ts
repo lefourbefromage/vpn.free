@@ -4,6 +4,8 @@ export const sv: Messages = {
   home: 'vpn.free startsida',
   signIn: 'Logga in',
   supportCta: 'Stöd vpn.free',
+  forum: 'Forum',
+  discord: 'Discord',
   menu: 'Meny',
 
   heroTitle: 'Öppna vilken webbplats som helst',

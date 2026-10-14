@@ -4,6 +4,8 @@ export const pt: Messages = {
   home: 'Início do vpn.free',
   signIn: 'Entrar',
   supportCta: 'Apoiar o vpn.free',
+  forum: 'Fórum',
+  discord: 'Discord',
   menu: 'Menu',
 
   heroTitle: 'Abra qualquer site',
