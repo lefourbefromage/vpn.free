@@ -2,7 +2,16 @@
    Read by `scripts/og-images.mjs` (renders public/og/*.png) and by the `seo` plugin in
    vite.config.ts (writes the <head> tags into the built HTML, since crawlers don't run JS). */
 
-export const SITE_URL = 'https://vpn.free';
+/* Absolute origin for canonical, og:url and og:image: crawlers fetch these URLs, so they must
+   point at a domain that serves the site. `SITE_URL` env overrides; on Vercel, production builds
+   use the project's production domain (custom domain once one is attached) and previews their
+   own URL. */
+const env = process.env;
+const vercelHost =
+  env.VERCEL_ENV === 'production'
+    ? env.VERCEL_PROJECT_PRODUCTION_URL
+    : env.VERCEL_BRANCH_URL || env.VERCEL_URL;
+export const SITE_URL = (env.SITE_URL || (vercelHost ? `https://${vercelHost}` : 'https://vpn.free')).replace(/\/$/, '');
 export const SITE_NAME = 'vpn.free';
 
 /** Locales of the site (src/i18n), as Open Graph expects them. */
