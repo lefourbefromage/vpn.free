@@ -3,5 +3,9 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/support/:path*", "destination": "/support.html" },
+    { "source": "/changelog/:path*", "destination": "/changelog.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
