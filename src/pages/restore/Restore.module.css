@@ -1,0 +1,59 @@
+.white {
+  color: #fff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.forumChip {
+  align-self: center;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.forgot {
+  align-self: flex-start;
+  margin-top: -8px;
+  font-size: 14px;
+  color: var(--lilac);
+  text-underline-offset: 3px;
+}
+
+.or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+.or span {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.passkey {
+  height: 54px;
+  font-size: 16px;
+}
+
+.signup {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.signup a {
+  font-weight: 600;
+  text-underline-offset: 3px;
+}

@@ -1,0 +1,110 @@
+.section {
+  position: relative;
+  z-index: 1;
+  margin-top: -240px;
+  animation: var(--kf-fade) 1.4s ease-out 0.3s both;
+}
+
+/* The 1360 × 720 stage stays centred and is cropped on narrower screens. */
+.viewport {
+  position: relative;
+  height: 720px;
+  display: flex;
+  justify-content: center;
+}
+
+.protectedSlot {
+  position: absolute;
+  left: 540px;
+  top: 590px;
+}
+
+.protected {
+  width: 300px;
+  padding: 16px 20px;
+  border-radius: var(--r-card-sm);
+  /* Near-opaque so the map dots don't show through the text. */
+  background: rgba(36, 22, 96, 0.92);
+  border: 1px solid rgba(124, 98, 255, 0.75);
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 0 0 4px rgba(91, 59, 255, 0.08),
+    0 24px 60px rgba(6, 2, 22, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: start;
+}
+.protectedTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+.protectedSub {
+  font-size: 14px;
+  color: var(--text-body);
+}
+
+.locked {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .section {
+    margin-top: -16px;
+  }
+  .viewport {
+    height: 380px;
+    overflow: hidden;
+  }
+  .below {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .protected {
+    width: auto;
+    padding: 16px 18px;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+  .protectedTitle {
+    font-size: 17px;
+  }
+}
+
+.lockedCard {
+  padding: 18px;
+  border-radius: var(--r-card-sm);
+  background: rgba(44, 30, 98, 0.6);
+  border: 1px solid rgba(162, 143, 255, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lockedCard p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+.lockedTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.lockedLink {
+  align-self: flex-start;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  text-underline-offset: 4px;
+}

@@ -1,0 +1,112 @@
+.header {
+  position: relative;
+  z-index: 3;
+  max-width: calc(var(--content-max) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 24px var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logoImg {
+  height: 30px;
+  width: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.quiet {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+/* The header CTA has no glow in the reference. */
+.support {
+  box-shadow: none;
+  font-size: 15px;
+  padding: 0 16px;
+}
+
+.menuBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-control);
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  padding: 0 4px;
+}
+.menuList a {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  border-radius: var(--r-control);
+  font-size: 17px;
+  text-decoration: none;
+}
+.menuList a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 767px) {
+  .header {
+    height: 64px;
+    padding-block: 0;
+    padding-inline: 16px 12px;
+    gap: 8px;
+  }
+  .logoImg {
+    height: 24px;
+  }
+  .actions {
+    gap: 8px;
+  }
+  .header .desktopOnly {
+    display: none;
+  }
+  .mobileOnly {
+    display: flex;
+  }
+  .support {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+  }
+  .support svg {
+    width: 16px;
+    height: 16px;
+  }
+  .quiet {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

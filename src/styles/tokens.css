@@ -1,0 +1,127 @@
+/* vpn.free design tokens — see design/vpn-free-design/HANDOFF.md §2.
+   Dark mode only. Components must read from these, never hard-code values. */
+
+:root {
+  /* Surfaces */
+  --bg: #110a28;
+  --surface: #1c1240;
+  --surface-sheet: #221650;
+  --surface-pop: rgba(30, 20, 70, 0.98);
+  --surface-tooltip: #261a57;
+  --surface-inset: #160e34; /* dotted illustration wells */
+  --surface-raised: #261a57; /* mini-UI cards inside illustrations */
+  --field: rgba(17, 10, 40, 0.7);
+  --scrim: rgba(8, 4, 22, 0.66);
+  --scrim-strong: rgba(8, 4, 22, 0.72);
+
+  /* Brand */
+  --primary: #5b3bff;
+  --primary-border: #7c62ff;
+  --lilac: #a28fff;
+  --lavender: #ece8ff;
+  --on-lavender: #1c1240;
+  --primary-a12: rgba(91, 59, 255, 0.12);
+  --primary-a16: rgba(91, 59, 255, 0.16);
+  --primary-a18: rgba(91, 59, 255, 0.18);
+  --primary-a22: rgba(91, 59, 255, 0.22);
+  --primary-a28: rgba(91, 59, 255, 0.28);
+
+  /* Feedback */
+  --success: #7eebc0;
+  --success-a14: rgba(126, 235, 192, 0.14);
+  --success-a50: rgba(126, 235, 192, 0.5);
+  --warning: #ffb84d;
+  --warning-alt: #f5b946;
+  --warning-text: #ffd9a0;
+  --warning-a08: rgba(255, 184, 77, 0.08);
+  --warning-a28: rgba(255, 184, 77, 0.28);
+  --error: #ff8a8a;
+  --error-text: #ffb3b3;
+  --error-a14: rgba(255, 138, 138, 0.14);
+  --danger-soft: #ff9aa3;
+  --discord: #5865f2;
+  --discord-soft: #d4d8ff;
+
+  /* Hero field (white on dark) */
+  --hero-field: #ffffff;
+  --hero-field-text: #1c1240;
+  --hero-field-placeholder: #6b6390;
+
+  /* Text */
+  --text: #ffffff;
+  --text-body: rgba(255, 255, 255, 0.74);
+  --text-secondary: rgba(255, 255, 255, 0.66);
+  --text-placeholder: rgba(255, 255, 255, 0.56);
+  --text-link: rgba(255, 255, 255, 0.78);
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --border-lilac: rgba(162, 143, 255, 0.4);
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, #6a4bff, #b9a8ff); /* app icon & avatars only */
+  --gradient-progress: linear-gradient(90deg, #5b3bff, #a28fff);
+  --glow-hero: radial-gradient(closest-side, rgba(91, 59, 255, 0.3), rgba(91, 59, 255, 0));
+  --dot-grid: radial-gradient(rgba(162, 143, 255, 0.16) 1.2px, transparent 1.4px);
+
+  /* Typography */
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Radii */
+  --r-control-sm: 10px;
+  --r-control: 12px;
+  --r-control-lg: 14px;
+  --r-card-sm: 18px;
+  --r-card: 20px;
+  --r-panel: 24px;
+  --r-container: 28px;
+  --r-pill: 999px;
+
+  /* Heights */
+  --h-hero-cta: 56px;
+  --h-cta: 56px;
+  --h-secondary: 48px;
+  --h-compact: 40px;
+  --h-touch: 44px;
+
+  /* Shadows */
+  --glow-primary: 0 10px 30px rgba(91, 59, 255, 0.45);
+  --shadow-float: 0 32px 80px rgba(4, 1, 16, 0.6);
+  --shadow-card: 0 20px 50px rgba(4, 1, 16, 0.55);
+  --shadow-tooltip: 0 16px 40px rgba(6, 2, 22, 0.55);
+  --shadow-sheet: 0 -24px 60px rgba(4, 1, 16, 0.6);
+
+  /* Focus */
+  --focus-ring: 2px solid #ece8ff;
+  --focus-offset: 3px;
+
+  /* Layout */
+  --content-max: 1360px;
+  --gutter: 40px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Keyframe names (defined in base.css). CSS Modules rename bare animation names,
+     so modules reference global keyframes through these variables. */
+  --kf-up: vfUp;
+  --kf-fade: vfFade;
+  --kf-reveal: vfReveal;
+  --kf-pulse: vfPulse;
+  --kf-ping: vfPing;
+  --kf-twinkle: vfTwinkle;
+  --kf-spin: vfSpin;
+  --kf-shimmer: vfShimmer;
+  --kf-breathe: vfBreathe;
+  --kf-sheet-in: vfSheetIn;
+  --kf-pop-in: vfPopIn;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 16px;
+  }
+}

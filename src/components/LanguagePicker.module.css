@@ -1,0 +1,107 @@
+.wrap {
+  position: relative;
+}
+
+.trigger {
+  height: 40px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--r-control-sm);
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+.trigger:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.triggerOpen {
+  background: var(--primary-a16);
+  border-color: rgba(124, 98, 255, 0.8);
+  color: #fff;
+}
+.short {
+  display: none;
+}
+
+/* Opens upwards: the picker sits at the very bottom of the page. */
+.dropdown {
+  bottom: calc(100% + 8px);
+  inset-inline-end: 0;
+  width: 240px;
+  padding: 6px;
+  gap: 0;
+  border-radius: var(--r-card-sm);
+  animation: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  max-height: min(420px, 60vh);
+  overflow-y: auto;
+  outline: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(162, 143, 255, 0.5) transparent;
+}
+
+.option {
+  min-height: 38px;
+  padding: 0 12px;
+  border-radius: var(--r-control-sm);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.84);
+  cursor: pointer;
+  text-align: start;
+  transition: background 0.15s ease;
+}
+.option:hover,
+.option:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+.option:focus-visible {
+  outline: var(--focus-ring, 2px solid #a28fff);
+  outline-offset: -2px;
+}
+.selected {
+  color: #fff;
+  font-weight: 600;
+  background: var(--primary-a16);
+}
+.name {
+  flex: 1;
+}
+.check {
+  flex: none;
+  color: var(--success);
+}
+
+.roomy {
+  max-height: none;
+}
+.roomy .option {
+  min-height: var(--h-touch);
+  font-size: 16px;
+}
+
+@media (max-width: 767px) {
+  .trigger {
+    padding: 0 10px;
+    gap: 6px;
+  }
+  .long {
+    display: none;
+  }
+  .short {
+    display: inline;
+  }
+}

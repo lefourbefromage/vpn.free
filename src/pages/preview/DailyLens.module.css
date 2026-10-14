@@ -1,0 +1,249 @@
+.site {
+  background: #faf8f3;
+  color: #1a1a1a;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: normal;
+  min-height: 100%;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.topbar {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #6b6b6b;
+  border-bottom: 1px solid #e4e0d6;
+}
+.mobileBar {
+  display: none;
+}
+.masthead {
+  padding: 26px 0 18px;
+  text-align: center;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 54px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.sections {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  border-top: 3px double #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.front {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 36px;
+  padding: 32px 0 40px;
+}
+.lead {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.img {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.imgHill {
+  position: absolute;
+  left: 12%;
+  bottom: -30%;
+  width: 70%;
+  height: 80%;
+  border-radius: 50%;
+}
+.imgSun {
+  position: absolute;
+  right: 8%;
+  top: 14%;
+  width: 22%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: hsla(40, 90%, 92%, 0.6);
+}
+.leadImg {
+  height: 360px;
+}
+.sideImg {
+  height: 150px;
+}
+.moreImg {
+  height: 120px;
+}
+
+.kicker {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b4231b;
+}
+.headline {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 38px;
+  line-height: 1.12;
+  font-weight: 700;
+}
+.standfirst {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #444;
+}
+.byline {
+  font-size: 13px;
+  color: #777;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.sideItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #e4e0d6;
+}
+.sideItem:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.sideFirst {
+  gap: 10px;
+}
+.sideTitle {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 21px;
+  line-height: 1.22;
+  font-weight: 600;
+}
+.sideTitleSm {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.more {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 28px 0 60px;
+  border-top: 1px solid #1a1a1a;
+}
+.moreItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.moreTitle {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .wrap {
+    padding: 0;
+  }
+  .topbar,
+  .masthead,
+  .sections {
+    display: none;
+  }
+  .mobileBar {
+    height: 52px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 20px;
+  }
+  .mobileMast {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .mobileLogin {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .front {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 16px;
+  }
+  .lead {
+    gap: 12px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e4e0d6;
+  }
+  .leadImg {
+    height: 220px;
+  }
+  .kicker {
+    font-size: 11px;
+  }
+  .headline {
+    font-size: 28px;
+    line-height: 1.14;
+  }
+  .standfirst {
+    font-size: 16px;
+  }
+  .byline {
+    font-size: 12px;
+  }
+  .side {
+    gap: 12px;
+  }
+  .sideItem,
+  .sideFirst {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+  }
+  .sideImg {
+    flex: none;
+    width: 96px;
+    height: 72px;
+  }
+  .sideTitle,
+  .sideTitleSm {
+    font-size: 17px;
+    line-height: 1.25;
+  }
+  .sideItem .kicker {
+    display: none;
+  }
+  .more {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 18px 16px 40px;
+  }
+}

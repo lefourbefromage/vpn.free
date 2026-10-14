@@ -1,0 +1,36 @@
+{
+  "brand": "vpn.free",
+  "tagline": "Le web du monde entier, depuis n'importe où",
+  "brief": "Un service gratuit (avec des accès VPN dédiés payants) pour naviguer sur n'importe quel site comme si l'on était dans un autre pays. Le logo doit inspirer la sécurité, la rapidité et l'accès au monde entier, sans les clichés du secteur (cadenas, bouclier, globe).",
+  "adjectives": ["sécurisé", "rapide", "mondial", "libre"],
+  "criteria": "Réussite : se distingue des VPN à bouclier bleu, reconnaissable à 16 px, fonctionne en une couleur, solide et dynamique à la fois.",
+  "mockups": ["app-icon", "website", "favicon-tab", "social", "payment-card", "sticker"],
+  "nav": ["Pays", "Tarifs", "Sécurité"],
+  "brand_color": "#5B3BFF",
+  "tile_color": "#1C1240",
+  "greyscale": false,
+  "final": true,
+  "deck_title": "identité finale",
+  "concepts": [
+    {
+      "name": "Boussole",
+      "symbol": "masters/vpnfree-symbol.svg",
+      "lockup": "masters/vpnfree-horizontal.svg",
+      "stacked": "masters/vpnfree-stacked.svg",
+      "avatar": "masters/vpnfree-app-icon.svg",
+      "symbol_on_tile": "masters/vpnfree-symbol-dark.svg",
+      "symbol_on_dark": "masters/vpnfree-symbol-dark.svg",
+      "lockup_on_dark": "masters/vpnfree-horizontal-dark.svg",
+      "stacked_on_dark": "masters/vpnfree-stacked-dark.svg",
+      "idea": "Un diamant fendu par une étoile à quatre branches qui file vers le haut : solide comme une pierre, ouvert dans toutes les directions.",
+      "rationale": [
+        "Le diamant : une forme dense et incassable, pour la sécurité",
+        "L'étoile décentrée : un départ, une direction, la vitesse",
+        "Quatre branches comme une rose des vents : n'importe quel pays",
+        "Deux tons de facettes pour le relief ; la forme tient aussi en une couleur"
+      ]
+    }
+  ],
+  "recommendation": "Version principale : violet et lilas sur fond clair. Sur fond sombre : blanc et blanc transparent sur violet nuit. Icône d'app : dégradé violet → lilas.",
+  "next_steps": ["Recherche d'antériorité de marque (INPI / EUIPO)", "Intégration du favicon et des icônes sur le site", "Déclinaisons réseaux sociaux"]
+}

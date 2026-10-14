@@ -1,0 +1,382 @@
+.stage {
+  position: relative;
+  flex: none;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+/* Arc and tooltips appear once the camera has arrived. */
+.fadeable {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease-out,
+    visibility 0s linear 0.4s;
+}
+.fadeable.shown {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease-out;
+}
+
+.layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+
+.dash {
+  animation: arcDash 1.1s linear infinite;
+}
+.dashSm {
+  animation: arcDashSm 1.1s linear infinite;
+}
+@keyframes arcDash {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+@keyframes arcDashSm {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+/* ---------- City pins (label on hover) ---------- */
+
+.city {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lavender);
+}
+.city::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(17, 10, 40, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(162, 143, 255, 0.45),
+    0 0 14px rgba(91, 59, 255, 0.5);
+  transition: box-shadow 0.2s ease;
+}
+.city svg {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+.city:hover::before {
+  box-shadow:
+    0 0 0 1.5px var(--lilac),
+    0 0 20px rgba(91, 59, 255, 0.8);
+}
+.city:hover svg {
+  transform: scale(1.2);
+}
+.city span {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translate(-50%, 4px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  padding: 5px 9px;
+  border-radius: 8px;
+  background: var(--surface-tooltip);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 8px 20px rgba(6, 2, 22, 0.5);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #fff;
+  white-space: nowrap;
+}
+.city:hover span {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.mobile .city::before {
+  width: 18px;
+  height: 18px;
+  box-shadow:
+    0 0 0 1px rgba(162, 143, 255, 0.45),
+    0 0 10px rgba(91, 59, 255, 0.5);
+}
+.mobile .city span {
+  bottom: 24px;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.cityTiny {
+  opacity: 0.5;
+}
+.cityTiny::before {
+  display: none;
+}
+.cityTiny svg {
+  width: 9px;
+  height: 9px;
+  color: var(--lilac);
+}
+
+/* ---------- Active markers ---------- */
+
+.marker {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.halo {
+  position: absolute;
+  left: -56px;
+  top: -36px;
+  width: 112px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(91, 59, 255, 0.6), rgba(91, 59, 255, 0));
+}
+.haloLilac {
+  background: radial-gradient(closest-side, rgba(162, 143, 255, 0.35), rgba(162, 143, 255, 0));
+}
+
+.pulse {
+  position: absolute;
+  left: -26px;
+  top: -17px;
+  width: 52px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(124, 98, 255, 0.85);
+  opacity: 0;
+  animation: var(--kf-pulse) 2.6s ease-out infinite;
+}
+.pulseLilac {
+  border-color: rgba(162, 143, 255, 0.7);
+}
+
+.starPin {
+  position: absolute;
+  left: -14px;
+  top: -14px;
+  color: #fff;
+}
+.dotPin {
+  position: absolute;
+  left: -7px;
+  top: -7px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(17, 10, 40, 0.9);
+}
+.outlinePin {
+  position: absolute;
+  left: -13px;
+  top: -13px;
+}
+
+.markerSm .halo {
+  left: -40px;
+  top: -26px;
+  width: 80px;
+  height: 52px;
+}
+.markerSm .pulse {
+  left: -18px;
+  top: -12px;
+  width: 36px;
+  height: 24px;
+}
+.markerSm .starPin {
+  left: -11px;
+  top: -11px;
+}
+.markerSm .dotPin {
+  left: -6px;
+  top: -6px;
+  width: 12px;
+  height: 12px;
+}
+.markerSm .outlinePin {
+  left: -10px;
+  top: -10px;
+}
+
+/* ---------- Tooltip ---------- */
+
+.tooltip {
+  --arrow: 12px;
+  position: absolute;
+  min-width: 160px;
+  padding: 10px 14px;
+  border-radius: var(--r-control);
+  background: var(--surface-tooltip);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-tooltip);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+  white-space: nowrap;
+}
+.tooltipLilac {
+  border-color: rgba(162, 143, 255, 0.4);
+  padding: 12px 16px;
+  gap: 4px;
+}
+.below {
+  top: 28px;
+}
+.above {
+  bottom: 30px;
+}
+
+.left,
+.right {
+  top: 0;
+  transform: translateY(-50%);
+}
+.left {
+  right: 26px;
+}
+.right {
+  left: 26px;
+}
+.left .arrow {
+  right: -7px;
+  top: calc(50% - 6px);
+  border-right: 1px solid var(--border-strong);
+  border-top: 1px solid var(--border-strong);
+}
+.right .arrow {
+  left: -7px;
+  top: calc(50% - 6px);
+  border-left: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+}
+.markerSm .left {
+  right: 20px;
+}
+.markerSm .right {
+  left: 20px;
+}
+
+.align_center {
+  left: 0;
+  transform: translateX(-50%);
+}
+.align_start {
+  left: -20px;
+}
+.align_end {
+  right: -20px;
+}
+
+.arrow {
+  position: absolute;
+  width: var(--arrow);
+  height: var(--arrow);
+  background: var(--surface-tooltip);
+  transform: rotate(45deg);
+}
+.below .arrow {
+  top: -7px;
+  border-left: 1px solid var(--border-strong);
+  border-top: 1px solid var(--border-strong);
+}
+.above .arrow {
+  bottom: -7px;
+  border-right: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+}
+.tooltipLilac .arrow {
+  border-color: rgba(162, 143, 255, 0.4);
+}
+.tooltipLilac.left .arrow,
+.tooltipLilac.right .arrow {
+  border-color: rgba(162, 143, 255, 0.4);
+}
+.align_center .arrow {
+  left: calc(50% - 6px);
+}
+.align_start .arrow {
+  left: 14px;
+}
+.align_end .arrow {
+  right: 14px;
+}
+
+.tLabel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
+}
+.tValue {
+  font-size: 16px;
+}
+.tNote {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.tooltip a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+
+.markerSm .tooltip {
+  --arrow: 10px;
+  min-width: 112px;
+  padding: 7px 10px;
+  border-radius: var(--r-control-sm);
+  gap: 1px;
+  box-shadow: 0 12px 30px rgba(6, 2, 22, 0.55);
+}
+.markerSm .below {
+  top: 22px;
+}
+.markerSm .align_start {
+  left: -36px;
+}
+.markerSm .align_end {
+  right: -12px;
+}
+.markerSm .align_start .arrow {
+  left: 31px;
+}
+.markerSm .align_end .arrow {
+  right: 7px;
+}
+.markerSm .below .arrow {
+  top: -6px;
+}
+.markerSm .tLabel {
+  font-size: 12px;
+}
+.markerSm .tValue {
+  font-size: 14px;
+}
+.markerSm .tNote {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.72);
+}

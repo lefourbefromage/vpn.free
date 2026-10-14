@@ -1,0 +1,253 @@
+.section {
+  padding: 120px 24px 0;
+}
+.inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.block {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--r-container);
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+}
+@media (max-width: 900px) {
+  .block {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.benefits {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.benefitText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.benefitTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+.benefitBody {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+.cta {
+  font-size: 17px;
+}
+.signin {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-underline-offset: 4px;
+}
+
+.visual {
+  position: relative;
+  min-height: 380px;
+  padding: 32px 24px;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background-color: var(--surface-inset);
+  background-image: var(--dot-grid);
+  background-size: 14px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.visualGlow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 460px;
+  height: 300px;
+  margin: -150px 0 0 -230px;
+  background: radial-gradient(closest-side, rgba(91, 59, 255, 0.38), rgba(91, 59, 255, 0));
+}
+
+.plans {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+.plan {
+  position: relative;
+  width: 180px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(38, 26, 87, 0.8);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.planHi {
+  background: var(--surface-raised);
+  border-color: rgba(124, 98, 255, 0.75);
+  box-shadow: 0 20px 50px rgba(4, 1, 16, 0.5);
+}
+.planBadge {
+  position: absolute;
+  top: -11px;
+  inset-inline-end: 14px;
+  height: 22px;
+  padding: 0 9px;
+  border-radius: var(--r-pill);
+  background: var(--lavender);
+  color: var(--on-lavender);
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+.planName {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+}
+.planPrice {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.planDays {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.chips {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.renew {
+  position: relative;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 72px 16px 0;
+  }
+  .inner {
+    gap: 28px;
+  }
+  .block {
+    padding: 10px;
+    gap: 8px;
+    border-radius: var(--r-panel);
+  }
+  /* Plans first on mobile */
+  .visual {
+    order: -1;
+    min-height: 0;
+    padding: 28px 12px 22px;
+    border-radius: 16px;
+    background-size: 12px 12px;
+    gap: 14px;
+  }
+  .plans {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+  .plan {
+    width: 140px;
+    padding: 14px;
+    border-radius: var(--r-control-lg);
+    gap: 4px;
+  }
+  .planHi {
+    box-shadow: none;
+  }
+  .planBadge {
+    top: -10px;
+    inset-inline-end: 10px;
+    height: 20px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+  .planName {
+    font-size: 13px;
+  }
+  .planPrice {
+    font-size: 30px;
+  }
+  .planDays {
+    font-size: 11px;
+  }
+  .chips {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+  .chips > span {
+    height: 26px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+  .renew {
+    font-size: 12px;
+  }
+  .benefits {
+    padding: 20px 12px 14px;
+    gap: 22px;
+  }
+  .list {
+    gap: 16px;
+  }
+  .list li {
+    gap: 12px;
+  }
+  .benefitTitle {
+    font-size: 16px;
+  }
+  .benefitBody {
+    font-size: 14px;
+  }
+  .ctaRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .signin {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

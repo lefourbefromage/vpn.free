@@ -1,0 +1,370 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: var(--scrim-strong);
+  backdrop-filter: blur(6px);
+  animation: var(--kf-fade) 0.3s ease-out both;
+}
+
+.dialog {
+  position: relative;
+  width: 540px;
+  max-width: calc(100% - 32px);
+  margin: 150px 0 40px;
+  padding: 28px 32px 32px;
+  border-radius: var(--r-panel);
+  background: rgba(34, 22, 80, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 40px 100px rgba(4, 1, 16, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: var(--kf-up) 0.4s var(--ease-out) both;
+}
+.dialog.slow {
+  margin-top: 110px;
+}
+
+.handle {
+  display: none;
+}
+
+/* Banner with the animated arc */
+.banner {
+  position: relative;
+  height: 112px;
+  border-radius: 16px;
+  background: rgba(17, 10, 40, 0.55);
+  overflow: hidden;
+}
+.bannerSvg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.dash {
+  animation: ldDash 0.9s linear infinite;
+}
+.slow .dash {
+  animation-duration: 2.4s;
+}
+@keyframes ldDash {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+.you {
+  position: absolute;
+  left: 49px;
+  top: 65px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(17, 10, 40, 0.9);
+}
+.youLabel {
+  position: absolute;
+  left: 36px;
+  top: 86px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.breathe {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(91, 59, 255, 0.65), rgba(91, 59, 255, 0));
+  animation: var(--kf-breathe) 2.4s ease-in-out infinite;
+}
+.ring {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(162, 143, 255, 0.7);
+  animation: var(--kf-spin) 6s linear infinite;
+}
+.slow .breathe {
+  animation-duration: 3.6s;
+}
+.slow .ring {
+  animation-duration: 10s;
+}
+.symbol {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+}
+.server {
+  position: absolute;
+  right: 16px;
+  top: 88px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Title + timer */
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.title {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.timer {
+  flex: none;
+  height: 28px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.slow .timer {
+  background: rgba(245, 185, 70, 0.12);
+  color: #ffd27a;
+}
+.timerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--warning-alt);
+}
+
+/* Progress */
+.track {
+  position: relative;
+  height: 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.bar {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  border-radius: 6px;
+  background: var(--primary);
+  box-shadow: 0 0 14px rgba(91, 59, 255, 0.8);
+  overflow: hidden;
+  transition: width 0.3s linear;
+}
+.shimmer {
+  position: absolute;
+  inset-block: 0;
+  width: 30%;
+  background: rgba(255, 255, 255, 0.28);
+  animation: var(--kf-shimmer) 1.6s ease-in-out infinite;
+}
+.slow .shimmer {
+  animation-duration: 2.4s;
+}
+
+/* Steps */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.step {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.stepLabel {
+  flex: 1;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.58);
+}
+.done .stepLabel {
+  color: rgba(255, 255, 255, 0.88);
+}
+.active .stepLabel {
+  color: #fff;
+  font-weight: 600;
+}
+.stepTime {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  font-variant-numeric: tabular-nums;
+}
+.active .stepTime {
+  color: rgba(255, 255, 255, 0.78);
+}
+.slow .active .stepTime {
+  color: #ffd27a;
+}
+.check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(126, 235, 192, 0.16);
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todo {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.26);
+}
+
+/* Slow warning */
+.warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--r-control-lg);
+  background: rgba(245, 185, 70, 0.1);
+  border: 1px solid rgba(245, 185, 70, 0.35);
+  animation: var(--kf-up) 0.4s var(--ease-out) both;
+}
+.warning > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.warningIcon {
+  flex: none;
+  margin-top: 1px;
+  color: var(--warning-alt);
+}
+.warningTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffd27a;
+}
+.warningText {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-body);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+/* Mobile: bottom sheet */
+@media (max-width: 767px) {
+  .root {
+    align-items: flex-end;
+  }
+  .dialog,
+  .dialog.slow {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 8px 20px calc(28px + env(safe-area-inset-bottom));
+    border-radius: var(--r-panel) var(--r-panel) 0 0;
+    background: var(--surface-sheet);
+    border: 0;
+    border-top: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-sheet);
+    backdrop-filter: none;
+    gap: 20px;
+    animation: var(--kf-sheet-in) 0.35s var(--ease-out) both;
+  }
+  .handle {
+    display: block;
+    align-self: center;
+    width: 40px;
+    height: 4px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.28);
+  }
+  .banner {
+    height: 96px;
+    border-radius: var(--r-control-lg);
+  }
+  .you {
+    left: 34px;
+    top: 56px;
+    width: 12px;
+    height: 12px;
+  }
+  .youLabel {
+    left: 26px;
+    top: 74px;
+    font-size: 11px;
+  }
+  .breathe {
+    right: 10px;
+    top: 14px;
+    width: 68px;
+    height: 68px;
+  }
+  .ring {
+    right: 22px;
+    top: 26px;
+    width: 44px;
+    height: 44px;
+  }
+  .symbol {
+    right: 31px;
+    top: 35px;
+  }
+  .server {
+    right: 12px;
+    top: 76px;
+    font-size: 10px;
+  }
+  .titleRow {
+    gap: 12px;
+  }
+  .title {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+  .timer {
+    height: 26px;
+    padding: 0 8px;
+    font-size: 13px;
+  }
+  .steps {
+    gap: 2px;
+  }
+  .stepLabel {
+    font-size: 15px;
+  }
+  .stepTime {
+    font-size: 12px;
+  }
+  .actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+    padding-top: 0;
+  }
+}

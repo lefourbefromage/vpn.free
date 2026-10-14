@@ -1,0 +1,113 @@
+.sheetRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  animation: var(--kf-fade) 0.25s ease-out both;
+}
+.scrim_default {
+  background: var(--scrim);
+}
+.scrim_strong {
+  background: var(--scrim-strong);
+  backdrop-filter: blur(6px);
+}
+.scrim_light {
+  background: rgba(8, 4, 22, 0.35);
+}
+
+.sheet {
+  position: relative;
+  margin: 0;
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  padding: 8px 16px calc(30px + env(safe-area-inset-bottom));
+  border-radius: var(--r-panel) var(--r-panel) 0 0;
+  background: var(--surface-sheet);
+  border-top: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-sheet);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--text);
+  animation: var(--kf-sheet-in) 0.32s var(--ease-out) both;
+}
+
+.handle {
+  flex: none;
+  align-self: center;
+  width: 40px;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.popover {
+  position: absolute;
+  z-index: 40;
+  margin: 0;
+  padding: 18px 20px 20px;
+  border-radius: var(--r-card);
+  background: var(--surface-pop);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-float);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: start;
+  animation: var(--kf-pop-in) 0.2s var(--ease-out) both;
+}
+
+.layerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.layerHeaderBig {
+  height: 56px;
+  margin: 4px 0 -2px;
+  padding-inline: 8px 4px;
+}
+
+.layerTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.close {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: var(--r-control-sm);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.closeBig {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-control);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}

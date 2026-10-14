@@ -1,0 +1,238 @@
+.page {
+  position: relative;
+  overflow-x: clip;
+}
+
+.hero {
+  position: relative;
+  padding: 72px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.glow {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  width: 900px;
+  max-width: 130vw;
+  height: 360px;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(91, 59, 255, 0.26), rgba(91, 59, 255, 0));
+  pointer-events: none;
+}
+.back {
+  position: relative;
+  margin-bottom: 20px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+.title {
+  position: relative;
+  font-size: 60px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  animation: var(--kf-up) 0.9s var(--ease-out) both;
+}
+.lead {
+  position: relative;
+  margin-top: 18px;
+  max-width: 560px;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--text-body);
+  text-wrap: balance;
+  animation: var(--kf-up) 0.9s var(--ease-out) 0.12s both;
+}
+
+.timelineWrap {
+  padding: 0 24px;
+}
+.timeline {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+.line {
+  position: absolute;
+  inset-inline-start: 231px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(rgba(162, 143, 255, 0.6), rgba(162, 143, 255, 0.08));
+}
+
+.day {
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 48px;
+}
+.node {
+  position: absolute;
+  inset-inline-start: 225px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--lilac);
+}
+.nodeLatest {
+  inset-inline-start: 224px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border: 0;
+  background: var(--primary);
+  box-shadow:
+    0 0 0 5px rgba(91, 59, 255, 0.22),
+    0 0 18px rgba(91, 59, 255, 0.8);
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  text-align: end;
+}
+.date time {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.82);
+}
+.date time.dateLatest {
+  color: #fff;
+}
+
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.entry {
+  padding: 24px 26px;
+  border-radius: var(--r-card);
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: border-color 0.2s ease;
+}
+.entry:hover {
+  border-color: rgba(162, 143, 255, 0.45);
+}
+.entryHi {
+  border-color: rgba(124, 98, 255, 0.55);
+  box-shadow: 0 20px 50px rgba(6, 2, 22, 0.4);
+}
+.tile {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: var(--primary-a22);
+  border: 1px solid rgba(124, 98, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.tileDiscord {
+  background: var(--discord);
+  border: 0;
+}
+.entryBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.entryTitle {
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+.entryText {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text-body);
+}
+.entryLink {
+  margin-top: 4px;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+  .day {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding-inline-start: 36px;
+  }
+  .node {
+    inset-inline-start: 7px;
+  }
+  .nodeLatest {
+    inset-inline-start: 6px;
+  }
+  .line {
+    inset-inline-start: 13px;
+  }
+  .date {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    text-align: start;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding: 40px 16px 40px;
+  }
+  .title {
+    font-size: 42px;
+  }
+  .lead {
+    margin-top: 14px;
+    font-size: 16px;
+  }
+  .timelineWrap {
+    padding: 0 16px;
+  }
+  .timeline {
+    gap: 40px;
+  }
+  .entry {
+    padding: 18px;
+    gap: 14px;
+    border-radius: var(--r-card-sm);
+  }
+  .tile {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--r-control);
+  }
+  .entryTitle {
+    font-size: 18px;
+  }
+  .entryText {
+    font-size: 15px;
+  }
+}

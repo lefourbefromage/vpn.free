@@ -1,0 +1,135 @@
+.footer {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 96px var(--gutter) 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'brand nav'
+    'brand lang';
+  align-items: start;
+  gap: 20px 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.brand {
+  grid-area: brand;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.logo {
+  height: 26px;
+  width: auto;
+  align-self: flex-start;
+}
+.tagline {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.nav {
+  grid-area: nav;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px 28px;
+  font-size: 15px;
+}
+.nav a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+.nav a:hover {
+  color: #fff;
+}
+
+.lang {
+  grid-area: lang;
+  justify-self: end;
+  height: 40px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--r-control-sm);
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14px;
+}
+.langShort {
+  display: none;
+}
+
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.shareLabel {
+  margin-inline-end: 8px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.64);
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding: 48px 16px 40px;
+    gap: 28px;
+  }
+  .top {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'brand lang'
+      'nav nav';
+    gap: 28px 12px;
+    padding-bottom: 24px;
+  }
+  .brand {
+    gap: 12px;
+  }
+  .logo {
+    height: 24px;
+  }
+  .tagline {
+    font-size: 14px;
+  }
+  .nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 16px;
+  }
+  .nav a {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .lang {
+    padding: 0 10px;
+    gap: 6px;
+  }
+  .langLong {
+    display: none;
+  }
+  .langShort {
+    display: inline;
+  }
+  .share {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .shareLabel {
+    font-size: 14px;
+  }
+}
