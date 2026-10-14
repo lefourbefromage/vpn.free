@@ -73,8 +73,14 @@ export function MapSection({ serverId, supporter }: { serverId: string | null; s
     <div className={styles.protected}>
       <LogoSymbol size={isMobile ? 34 : 36} />
       <div>
-        <div className={styles.protectedTitle}>{t('protected')}</div>
-        <div className={styles.protectedSub}>{t('trafficFrom', { city: exit.city })}</div>
+        <div className={styles.protectedTitle}>{t('readyToConnect')}</div>
+        <div className={styles.protectedSub}>{t('sitesWillSee', { place: targetLabel })}</div>
+        {locked && (
+          <div className={styles.protectedNote}>
+            <Icon name="star" size={12} className="lilac" />
+            {t('supportersOnly')}
+          </div>
+        )}
       </div>
     </div>
   );

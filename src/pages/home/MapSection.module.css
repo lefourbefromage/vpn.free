@@ -43,6 +43,15 @@
   font-size: 14px;
   color: var(--text-body);
 }
+.protectedNote {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--lilac);
+}
 
 .locked {
   display: inline-flex;
