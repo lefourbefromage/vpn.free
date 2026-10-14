@@ -96,4 +96,9 @@ export const pt: Messages = {
   cookiesPolicy: 'Privacidade e dados',
   cookiesNecessary: 'Apenas o necessário',
   cookiesAccept: 'Aceitar',
+
+  close: 'Fechar',
+  gateTitle: 'Navegue a partir de {city} como apoiador',
+  gateBody: 'Escolher um local é um agradecimento aos apoiadores. Sem isso, sua visita passa por {city}, grátis e sem limites.',
+  gateContinue: 'Continuar via {city}',
 };

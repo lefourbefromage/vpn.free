@@ -96,4 +96,9 @@ export const de: Messages = {
   cookiesPolicy: 'Datenschutz und Daten',
   cookiesNecessary: 'Nur notwendige',
   cookiesAccept: 'Akzeptieren',
+
+  close: 'Schließen',
+  gateTitle: 'Als Unterstützer über {city} surfen',
+  gateBody: 'Einen Standort zu wählen ist ein Dankeschön für Unterstützer. Ohne Unterstützung läuft dein Besuch über {city}, kostenlos und unbegrenzt.',
+  gateContinue: 'Weiter über {city}',
 };

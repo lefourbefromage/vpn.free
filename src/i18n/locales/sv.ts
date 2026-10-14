@@ -96,4 +96,9 @@ export const sv: Messages = {
   cookiesPolicy: 'Integritet och data',
   cookiesNecessary: 'Endast nödvändiga',
   cookiesAccept: 'Godkänn',
+
+  close: 'Stäng',
+  gateTitle: 'Surfa från {city} som supporter',
+  gateBody: 'Att välja plats är ett tack till supporters. Annars går ditt besök via {city}, gratis och obegränsat.',
+  gateContinue: 'Fortsätt via {city}',
 };

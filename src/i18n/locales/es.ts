@@ -96,4 +96,9 @@ export const es: Messages = {
   cookiesPolicy: 'Privacidad y datos',
   cookiesNecessary: 'Solo lo necesario',
   cookiesAccept: 'Aceptar',
+
+  close: 'Cerrar',
+  gateTitle: 'Navega desde {city} como colaborador',
+  gateBody: 'Elegir una ubicación es un agradecimiento para los colaboradores. Si no, tu visita pasa por {city}, gratis y sin límites.',
+  gateContinue: 'Continuar vía {city}',
 };

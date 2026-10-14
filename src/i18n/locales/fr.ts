@@ -96,4 +96,9 @@ export const fr: Messages = {
   cookiesPolicy: 'Confidentialité et données',
   cookiesNecessary: 'Uniquement le nécessaire',
   cookiesAccept: 'Accepter',
+
+  close: 'Fermer',
+  gateTitle: 'Naviguer depuis {city} : réservé aux soutiens',
+  gateBody: 'Choisir un emplacement est un remerciement pour les soutiens. Sinon, votre visite passe par {city}, gratuitement et sans limite.',
+  gateContinue: 'Continuer via {city}',
 };

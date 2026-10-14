@@ -96,4 +96,9 @@ export const ar: Messages = {
   cookiesPolicy: 'الخصوصية والبيانات',
   cookiesNecessary: 'الضرورية فقط',
   cookiesAccept: 'قبول',
+
+  close: 'إغلاق',
+  gateTitle: 'تصفّح من {city} كداعم',
+  gateBody: 'اختيار الموقع ميزة شكر للداعمين. بدونها، تمر زيارتك عبر {city}، مجانًا وبلا حدود.',
+  gateContinue: 'المتابعة عبر {city}',
 };

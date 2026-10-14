@@ -96,4 +96,9 @@ export const fa: Messages = {
   cookiesPolicy: 'حریم خصوصی و داده‌ها',
   cookiesNecessary: 'فقط موارد ضروری',
   cookiesAccept: 'پذیرفتن',
+
+  close: 'بستن',
+  gateTitle: 'از {city} به‌عنوان حامی مرور کنید',
+  gateBody: 'انتخاب مکان، قدردانی از حامیان است. در غیر این صورت، بازدید شما رایگان و نامحدود از {city} عبور می‌کند.',
+  gateContinue: 'ادامه از طریق {city}',
 };

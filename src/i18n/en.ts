@@ -105,6 +105,12 @@ export const en = {
   cookiesPolicy: 'Privacy and data',
   cookiesNecessary: 'Necessary only',
   cookiesAccept: 'Accept',
+
+  // Supporter city gate (URL form)
+  close: 'Close',
+  gateTitle: 'Browse from {city} as a supporter',
+  gateBody: 'Picking a location is a thank-you for supporters. Without it, your visit goes through {city}, free and unlimited.',
+  gateContinue: 'Continue via {city}',
 };
 
 export type MessageKey = keyof typeof en;

@@ -1,0 +1,134 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-strong);
+  backdrop-filter: blur(6px);
+  animation: var(--kf-fade) 0.25s ease-out both;
+}
+
+.dialog {
+  position: relative;
+  width: 460px;
+  max-width: 100%;
+  padding: 24px 28px 28px;
+  border-radius: var(--r-panel);
+  background: var(--surface-sheet);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-float);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: var(--kf-pop-in) 0.25s var(--ease-out) both;
+}
+
+.handle {
+  display: none;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.close {
+  width: 36px;
+  height: 36px;
+  margin: -6px -10px -6px 0;
+  border: 0;
+  border-radius: var(--r-control-sm);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.body {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.actions > * {
+  min-width: 0;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.signin {
+  align-self: flex-start;
+  font-size: 14px;
+  color: var(--lilac);
+  text-underline-offset: 4px;
+}
+.signin:hover {
+  color: var(--lavender);
+}
+
+@media (max-width: 767px) {
+  .root {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .dialog {
+    width: 100%;
+    padding: 8px 20px calc(28px + env(safe-area-inset-bottom));
+    border-radius: var(--r-panel) var(--r-panel) 0 0;
+    border: 0;
+    border-top: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-sheet);
+    animation: var(--kf-sheet-in) 0.32s var(--ease-out) both;
+  }
+  .handle {
+    display: block;
+    align-self: center;
+    width: 40px;
+    height: 4px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.28);
+  }
+  .actions {
+    grid-template-columns: 1fr;
+  }
+  .actions > * {
+    height: 52px;
+  }
+  .signin {
+    align-self: center;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

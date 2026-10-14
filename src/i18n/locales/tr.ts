@@ -96,4 +96,9 @@ export const tr: Messages = {
   cookiesPolicy: 'Gizlilik ve veriler',
   cookiesNecessary: 'Yalnızca gerekli olanlar',
   cookiesAccept: 'Kabul et',
+
+  close: 'Kapat',
+  gateTitle: 'Destekçi olarak {city} üzerinden gezin',
+  gateBody: 'Konum seçmek destekçilere bir teşekkürdür. Aksi halde ziyaretiniz ücretsiz ve sınırsız olarak {city} üzerinden geçer.',
+  gateContinue: '{city} üzerinden devam et',
 };

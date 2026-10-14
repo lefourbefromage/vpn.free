@@ -96,4 +96,9 @@ export const zh: Messages = {
   cookiesPolicy: '隐私与数据',
   cookiesNecessary: '仅必要',
   cookiesAccept: '接受',
+
+  close: '关闭',
+  gateTitle: '以支持者身份从 {city} 浏览',
+  gateBody: '选择位置是对支持者的感谢。否则，您的访问将经由 {city}，免费且不限量。',
+  gateContinue: '经由 {city} 继续',
 };
