@@ -8,6 +8,7 @@ import {
   useState,
   type ReactNode,
 } from 'react';
+import { detectLang } from '../i18n/langs';
 
 /* Prototype state. Everything here is fake and lives in this browser only:
    it lets the flows chain together (pay → supporter → pick a server) and lets
@@ -43,6 +44,8 @@ export interface ProtoState {
   dir: 'ltr' | 'rtl';
   /** Interface language (see src/i18n). Picking Arabic or Persian also switches `dir`. */
   lang: string;
+  /** True once the visitor picked a language. Until then it follows the browser's. */
+  langPicked: boolean;
   /** Fictional IP-based location of the visitor. */
   visitorId: string;
   cookies: CookieChoice;
@@ -66,20 +69,28 @@ const DEFAULT_STATE: ProtoState = {
   loadingMode: 'normal',
   dir: 'ltr',
   lang: 'en',
+  langPicked: false,
   visitorId: 'marseille',
   cookies: null,
 };
 
 const STORAGE_KEY = 'vpnfree-proto-v1';
 
+/** Until the visitor picks a language, use the browser's. */
+function withBrowserLang(state: ProtoState): ProtoState {
+  if (state.langPicked) return state;
+  const lang = detectLang();
+  return { ...state, lang: lang.code, dir: lang.dir };
+}
+
 function load(): ProtoState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return { ...DEFAULT_STATE, ...JSON.parse(raw) };
+    if (raw) return withBrowserLang({ ...DEFAULT_STATE, ...JSON.parse(raw) });
   } catch {
     /* storage unavailable: start fresh */
   }
-  return DEFAULT_STATE;
+  return withBrowserLang(DEFAULT_STATE);
 }
 
 function save(state: ProtoState) {
@@ -149,7 +160,7 @@ export function ProtoProvider({ children }: { children: ReactNode }) {
     setState((s) => ({ ...s, ...patch }));
   }, []);
 
-  const reset = useCallback(() => setState({ ...DEFAULT_STATE }), []);
+  const reset = useCallback(() => setState(withBrowserLang(DEFAULT_STATE)), []);
 
   const registerGroup = useCallback((id: string, group: ProtoActionGroup | null) => {
     setGroupMap((m) => {

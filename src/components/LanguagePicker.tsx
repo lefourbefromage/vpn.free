@@ -20,7 +20,7 @@ export function LanguagePicker() {
 
   const choose = (code: string) => {
     const lang = getLang(code);
-    update({ lang: lang.code, dir: lang.dir });
+    update({ lang: lang.code, dir: lang.dir, langPicked: true });
     setOpen(false);
   };
 
