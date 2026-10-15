@@ -8,9 +8,9 @@ export const sv: Messages = {
   discord: 'Discord',
   menu: 'Meny',
 
-  heroTitle: 'En gratis VPN,',
-  heroAccent: 'direkt i din webbläsare.',
-  heroLead: 'Inget att installera, inget konto. Webbplatser ser vår server, inte dig.',
+  heroTitle: 'Öppna vilken webbplats som helst',
+  heroAccent: 'utan att installera något.',
+  heroLead: 'Direkt i webbläsaren, inget konto. Webbplatser ser vår server, inte dig.',
   urlLabel: 'Webbadress eller sökning',
   urlPlaceholder: 'Ange en URL eller sök',
   go: 'Kör',
