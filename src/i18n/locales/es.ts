@@ -8,9 +8,9 @@ export const es: Messages = {
   discord: 'Discord',
   menu: 'Menú',
 
-  heroTitle: 'Una VPN gratis,',
-  heroAccent: 'directamente en tu navegador.',
-  heroLead: 'Sin instalar nada, sin cuenta. Los sitios ven nuestro servidor, no a ti.',
+  heroTitle: 'Abre cualquier web',
+  heroAccent: 'sin instalar nada.',
+  heroLead: 'Desde tu navegador, sin cuenta. Los sitios ven nuestro servidor, no a ti.',
   urlLabel: 'Dirección web o búsqueda',
   urlPlaceholder: 'Escribe una URL o busca',
   go: 'Ir',

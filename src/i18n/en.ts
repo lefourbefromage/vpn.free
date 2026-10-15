@@ -10,9 +10,9 @@ export const en = {
   menu: 'Menu',
 
   // Hero
-  heroTitle: 'A free VPN,',
-  heroAccent: 'right in your browser.',
-  heroLead: 'No install, no account. Sites see our server, not you.',
+  heroTitle: 'Open any website',
+  heroAccent: 'without installing anything.',
+  heroLead: 'Right in your browser, no account. Sites see our server, not you.',
   urlLabel: 'Website address or search',
   urlPlaceholder: 'Enter a URL or search',
   go: 'Go',

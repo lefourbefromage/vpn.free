@@ -8,9 +8,9 @@ export const zh: Messages = {
   discord: 'Discord',
   menu: '菜单',
 
-  heroTitle: '免费 VPN，',
-  heroAccent: '直接在浏览器中使用。',
-  heroLead: '无需安装，无需账户。网站看到的是我们的服务器，而不是你。',
+  heroTitle: '打开任何网站',
+  heroAccent: '无需安装任何东西。',
+  heroLead: '直接在浏览器中使用，无需账户。网站看到的是我们的服务器，而不是你。',
   urlLabel: '网址或搜索',
   urlPlaceholder: '输入网址或搜索',
   go: '前往',
