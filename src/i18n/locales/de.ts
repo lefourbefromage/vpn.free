@@ -38,6 +38,11 @@ export const de: Messages = {
   lockedBody: 'Bis dahin surfst du weiter über {city}, kostenlos und unbegrenzt.',
   srSitesSee: 'Websites sehen {place}.',
   srLocked: '{city} ist für Unterstützer verfügbar.',
+  mapPick: 'Diesen Server wählen',
+  mapPickSupporter: 'Wählen · für Unterstützer',
+  mapPickAuto: 'Zurück zu Automatisch (gratis)',
+  mapRecenter: 'Zentrieren',
+  mapDragHint: 'Ziehen zum Erkunden',
 
   promisesTitle: 'Drei Versprechen.',
   promisesAccent: 'Kein Kleingedrucktes.',

@@ -1,9 +1,22 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import type { MapSize, Server } from '../data/servers';
+import { useEffect, useMemo, useRef, useState, type PointerEvent, type ReactNode } from 'react';
+import type { MapSize } from '../data/servers';
 import { useReducedMotion } from '../hooks';
 import { Icon } from './Icon';
 import { isLand } from './worldmap/landMask';
-import { LOOKS, frame, project, sampleDots, tween, type Camera, type GeoPoint, type GridLayer, type Look } from './worldmap/projection';
+import {
+  LOOKS,
+  frame,
+  invMerc,
+  merc,
+  project,
+  sampleDots,
+  tween,
+  wrap,
+  type Camera,
+  type GeoPoint,
+  type GridLayer,
+  type Look,
+} from './worldmap/projection';
 import styles from './DotMap.module.css';
 
 export interface MapMarker extends GeoPoint {
@@ -15,13 +28,27 @@ export interface MapMarker extends GeoPoint {
   tooltipTone?: 'default' | 'lilac';
 }
 
+/** A server city drawn as a small clickable star (label and hint on hover). */
+export interface MapPin extends GeoPoint {
+  id: string;
+  label: string;
+  hint: string;
+  /** free = white star (Automatic), lilac = supporter city, default = lavender. */
+  tone?: 'default' | 'free' | 'lilac';
+}
+
 interface Props {
   size: MapSize;
   origin: MapMarker;
   /** When set, an arc is drawn from the origin and the camera frames both. */
   destination?: MapMarker;
-  /** Servers drawn as small hover pins. */
-  pins: readonly Server[];
+  /** Server cities drawn as small clickable stars. */
+  pins: readonly MapPin[];
+  onPinSelect?: (id: string) => void;
+  /** Label of the button that brings the camera back after the map was dragged. */
+  recenterLabel?: string;
+  /** Label of the animated "drag me" hint, shown until the visitor first drags the map. */
+  dragHint?: string;
   /** Rendered on top of the map (e.g. the "Protected" card on desktop). */
   children?: ReactNode;
 }
@@ -30,13 +57,25 @@ type Placement = 'above' | 'below' | 'left' | 'right';
 
 const TRAVEL_MS = 1200;
 const TWINKLE_FPS = 24;
+/** Pointer travel (px) before a press becomes a drag: on the map, and on a star (a shaky
+    click or tap must still select it). */
+const DRAG_SLOP = 6;
+const PIN_DRAG_SLOP = 16;
+/** Latitudes the camera may be dragged to. */
+const LAT_MIN = -55;
+const LAT_MAX = 72;
+/** Zoom while exploring, as a share of the default zoom (phones stay above the "tiny pins"
+    threshold), and how fast it gets there. */
+const PAN_ZOOM: Record<MapSize, number> = { desktop: 0.4, mobile: 0.62 };
+const ZOOM_MS = 350;
+const EXPLORED_KEY = 'vpnfree-map-explored';
 
 /**
  * Flat world dot map in the style of the reference (tilted sheet, curved edges, vignette).
  * The camera glides to frame the origin (and destination) whenever they change.
  * Geography stays left-to-right in RTL layouts.
  */
-export function DotMap({ size, origin, destination, pins, children }: Props) {
+export function DotMap({ size, origin, destination, pins, onPinSelect, recenterLabel, dragHint, children }: Props) {
   const look = LOOKS[size];
   const reduced = useReducedMotion();
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -53,9 +92,28 @@ export function DotMap({ size, origin, destination, pins, children }: Props) {
   const gridRef = useRef<GridLayer[]>([{ k: target.k, alpha: 1 }]);
   const [cam, setCam] = useState<Camera>(target);
   const [settled, setSettled] = useState(true);
+  /** The visitor dragged the map away from the framed view. */
+  const [panned, setPanned] = useState(false);
+  const [dragging, setDragging] = useState(false);
+  const travelRef = useRef(0);
+  const zoomRef = useRef(0);
+  const dragRef = useRef<{ id: number; x: number; y: number; slop: number; moved: boolean } | null>(null);
+  /** Swallows the click that ends a drag (so dropping on a star doesn't select it). */
+  const swallowClick = useRef(false);
+  const [recenter, setRecenter] = useState(0);
+  /** The visitor has dragged the map before (this visit or an earlier one): no more hint. */
+  const [explored, setExplored] = useState(() => {
+    try {
+      return localStorage.getItem(EXPLORED_KEY) === '1';
+    } catch {
+      return false;
+    }
+  });
 
   // Camera travel.
   useEffect(() => {
+    setPanned(false);
+    cancelAnimationFrame(zoomRef.current);
     const from = camRef.current;
     if (reduced || (from.lon === target.lon && from.lat === target.lat && from.k === target.k && from.ay === target.ay)) {
       camRef.current = target;
@@ -82,12 +140,83 @@ export function DotMap({ size, origin, destination, pins, children }: Props) {
           : [{ k: target.k, alpha: 1 }];
       camRef.current = c;
       setCam(c);
-      if (t < 1) raf = requestAnimationFrame(step);
+      if (t < 1) raf = travelRef.current = requestAnimationFrame(step);
       else setSettled(true);
     };
-    raf = requestAnimationFrame(step);
+    raf = travelRef.current = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
-  }, [target, look, reduced]);
+  }, [target, look, reduced, recenter]);
+
+  // Drag to pan: horizontal moves the longitude, vertical the latitude (touch keeps vertical
+  // swipes for scrolling the page, see touch-action in the CSS). Grabbing the map also zooms
+  // out a little, so the other cities are a short drag away.
+  useEffect(() => () => cancelAnimationFrame(zoomRef.current), []);
+
+  const moveCam = (c: Camera) => {
+    camRef.current = c;
+    setCam(c);
+  };
+  const onPointerDown = (e: PointerEvent<HTMLDivElement>) => {
+    swallowClick.current = false;
+    if (e.button !== 0 || (e.target as Element).closest('a, [data-nodrag]')) return;
+    const onPin = Boolean((e.target as Element).closest('button'));
+    dragRef.current = { id: e.pointerId, x: e.clientX, y: e.clientY, slop: onPin ? PIN_DRAG_SLOP : DRAG_SLOP, moved: false };
+  };
+  const onPointerMove = (e: PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    if (!drag || drag.id !== e.pointerId) return;
+    const dx = e.clientX - drag.x;
+    const dy = e.clientY - drag.y;
+    if (!drag.moved) {
+      if (Math.hypot(dx, dy) < drag.slop) return;
+      drag.moved = true;
+      e.currentTarget.setPointerCapture(e.pointerId);
+      // Grab the map mid-flight: stop the camera where it is.
+      cancelAnimationFrame(travelRef.current);
+      setSettled(true);
+      setDragging(true);
+      setPanned(true);
+      if (!explored) {
+        setExplored(true);
+        try {
+          localStorage.setItem(EXPLORED_KEY, '1');
+        } catch {
+          /* private mode: the hint just comes back next visit */
+        }
+      }
+      zoomOut();
+    }
+    drag.x = e.clientX;
+    drag.y = e.clientY;
+    const c = camRef.current;
+    const m = merc(c.lat) + ((dy * Math.PI) / 180 / c.k / Math.cos(look.th));
+    moveCam({ ...c, lon: wrap(c.lon - dx / c.k), lat: Math.max(LAT_MIN, Math.min(LAT_MAX, invMerc(m))) });
+  };
+  const onPointerEnd = (e: PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    if (!drag || drag.id !== e.pointerId) return;
+    dragRef.current = null;
+    if (drag.moved) {
+      swallowClick.current = true;
+      setDragging(false);
+    }
+  };
+  function zoomOut() {
+    const fromK = camRef.current.k;
+    const toK = Math.max(look.kMin, look.kDefault * PAN_ZOOM[size]);
+    gridRef.current = [{ k: fromK, alpha: 1 }];
+    if (fromK <= toK) return;
+    cancelAnimationFrame(zoomRef.current);
+    const start = performance.now();
+    const step = (now: number) => {
+      const t = reduced ? 1 : Math.min(1, (now - start) / ZOOM_MS);
+      const e = t * t * (3 - 2 * t);
+      gridRef.current = t < 1 ? [{ k: fromK, alpha: 1 - e }, { k: toK, alpha: e }] : [{ k: toK, alpha: 1 }];
+      moveCam({ ...camRef.current, k: Math.exp(Math.log(fromK) + (Math.log(toK) - Math.log(fromK)) * e) });
+      if (t < 1) zoomRef.current = requestAnimationFrame(step);
+    };
+    zoomRef.current = requestAnimationFrame(step);
+  }
 
   // Canvas: dots follow the camera; a few of them twinkle.
   useEffect(() => {
@@ -119,6 +248,7 @@ export function DotMap({ size, origin, destination, pins, children }: Props) {
   }, [look, reduced]);
 
   const desktop = size === 'desktop';
+  const pinTone = { default: '', free: styles.cityFree, lilac: styles.cityLilac };
   const at = (p: GeoPoint) => project(look, cam, p.lat, p.lon);
   const visible = (x: number, y: number) => x > -60 && x < look.W + 60 && y > -60 && y < look.H + 60;
 
@@ -139,20 +269,42 @@ export function DotMap({ size, origin, destination, pins, children }: Props) {
   const focal = new Set([`${origin.lat},${origin.lon}`, destination && `${destination.lat},${destination.lon}`]);
 
   return (
-    <div className={`${styles.stage} ${desktop ? styles.desktop : styles.mobile}`} style={{ width: look.W, height: look.H }} dir="ltr">
+    <div
+      className={`${styles.stage} ${desktop ? styles.desktop : styles.mobile} ${dragging ? styles.dragging : ''}`}
+      style={{ width: look.W, height: look.H }}
+      dir="ltr"
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerEnd}
+      onPointerCancel={onPointerEnd}
+      onClickCapture={(e) => {
+        if (!swallowClick.current) return;
+        swallowClick.current = false;
+        e.stopPropagation();
+        e.preventDefault();
+      }}
+    >
       <canvas ref={canvasRef} aria-hidden="true" className={styles.canvas} style={{ width: look.W, height: look.H }} />
 
-      {pins.map((s) => {
-        if (focal.has(`${s.lat},${s.lon}`)) return null;
-        const p = at(s);
+      {pins.map((pin) => {
+        if (focal.has(`${pin.lat},${pin.lon}`)) return null;
+        const p = at(pin);
         if (!visible(p.x, p.y)) return null;
         return (
-          <div key={s.id} aria-hidden="true" className={`${styles.city} ${tiny ? styles.cityTiny : ''}`} style={{ left: p.x, top: p.y }}>
+          <button
+            key={pin.id}
+            type="button"
+            aria-label={`${pin.label} — ${pin.hint}`}
+            className={`${styles.city} ${pinTone[pin.tone ?? 'default']} ${tiny ? styles.cityTiny : ''}`}
+            style={{ left: p.x, top: p.y }}
+            onClick={() => onPinSelect?.(pin.id)}
+          >
             <Icon name="star" size={desktop ? 13 : 10} />
-            <span>
-              {s.city}, {s.country}
+            <span aria-hidden="true" className={styles.tip}>
+              <span className="mono">{pin.label}</span>
+              <span className={styles.tipHint}>{pin.hint}</span>
             </span>
-          </div>
+          </button>
         );
       })}
 
@@ -219,6 +371,20 @@ export function DotMap({ size, origin, destination, pins, children }: Props) {
           settled={settled}
           delayed
         />
+      )}
+
+      {dragHint && !explored && (
+        <div aria-hidden="true" className={styles.dragHint}>
+          <Icon name="hand" size={desktop ? 18 : 16} className={styles.dragHand} />
+          {dragHint}
+        </div>
+      )}
+
+      {panned && recenterLabel && (
+        <button type="button" data-nodrag className={styles.recenter} onClick={() => setRecenter((n) => n + 1)}>
+          <Icon name="globe" size={desktop ? 16 : 14} />
+          {recenterLabel}
+        </button>
       )}
 
       {children}

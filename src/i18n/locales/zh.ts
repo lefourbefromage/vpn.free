@@ -38,6 +38,11 @@ export const zh: Messages = {
   lockedBody: '在此之前，你可以继续通过{city}免费、无限制地浏览。',
   srSitesSee: '网站看到的是{place}。',
   srLocked: '{city}为支持者专享。',
+  mapPick: '选择此服务器',
+  mapPickSupporter: '选择 · 支持者专享',
+  mapPickAuto: '返回自动（免费）',
+  mapRecenter: '回到中心',
+  mapDragHint: '拖动以探索',
 
   promisesTitle: '三个承诺。',
   promisesAccent: '没有附加条款。',

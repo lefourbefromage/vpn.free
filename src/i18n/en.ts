@@ -42,6 +42,11 @@ export const en = {
   lockedBody: 'Until then you keep browsing through {city}, free and unlimited.',
   srSitesSee: 'Sites see {place}.',
   srLocked: '{city} is available for supporters.',
+  mapPick: 'Select this server',
+  mapPickSupporter: 'Select · for supporters',
+  mapPickAuto: 'Back to Automatic (free)',
+  mapRecenter: 'Recenter',
+  mapDragHint: 'Drag to explore',
 
   // Promises
   promisesTitle: 'Three promises.',

@@ -38,6 +38,11 @@ export const fr: Messages = {
   lockedBody: "En attendant, vous continuez de naviguer via {city}, gratuitement et sans limite.",
   srSitesSee: 'Les sites voient {place}.',
   srLocked: '{city} est réservé aux soutiens.',
+  mapPick: 'Sélectionner ce serveur',
+  mapPickSupporter: 'Sélectionner · réservé aux soutiens',
+  mapPickAuto: 'Revenir en Automatique (gratuit)',
+  mapRecenter: 'Recentrer',
+  mapDragHint: 'Glissez pour explorer',
 
   promisesTitle: 'Trois promesses.',
   promisesAccent: 'Sans petites lignes.',

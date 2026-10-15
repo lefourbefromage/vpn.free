@@ -38,6 +38,11 @@ export const sv: Messages = {
   lockedBody: 'Tills dess surfar du vidare via {city}, gratis och obegränsat.',
   srSitesSee: 'Webbplatser ser {place}.',
   srLocked: '{city} är tillgänglig för supportrar.',
+  mapPick: 'Välj den här servern',
+  mapPickSupporter: 'Välj · för supportrar',
+  mapPickAuto: 'Tillbaka till Automatiskt (gratis)',
+  mapRecenter: 'Centrera',
+  mapDragHint: 'Dra för att utforska',
 
   promisesTitle: 'Tre löften.',
   promisesAccent: 'Inget finstilt.',

@@ -156,7 +156,7 @@ export function Home({ backdrop, backdropUrl }: HomeProps) {
         </div>
       </section>
 
-      <MapSection serverId={state.serverId} supporter={Boolean(state.supporter)} />
+      <MapSection serverId={state.serverId} supporter={Boolean(state.supporter)} onSelect={(id) => update({ serverId: id })} />
       <Promises />
       <SupportBlock />
       <Community />

@@ -38,6 +38,11 @@ export const fa: Messages = {
   lockedBody: 'تا آن زمان، از طریق {city} رایگان و نامحدود به گشت‌وگذار ادامه می‌دهید.',
   srSitesSee: 'سایت‌ها {place} را می‌بینند.',
   srLocked: '{city} ویژهٔ حامیان است.',
+  mapPick: 'انتخاب این سرور',
+  mapPickSupporter: 'انتخاب · ویژهٔ حامیان',
+  mapPickAuto: 'بازگشت به خودکار (رایگان)',
+  mapRecenter: 'بازگشت به مرکز',
+  mapDragHint: 'برای کاوش بکشید',
 
   promisesTitle: 'سه قول.',
   promisesAccent: 'بدون شرط پنهان.',

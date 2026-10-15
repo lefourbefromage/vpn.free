@@ -38,6 +38,11 @@ export const id: Messages = {
   lockedBody: 'Sampai saat itu kamu tetap menjelajah lewat {city}, gratis dan tanpa batas.',
   srSitesSee: 'Situs melihat {place}.',
   srLocked: '{city} tersedia untuk pendukung.',
+  mapPick: 'Pilih server ini',
+  mapPickSupporter: 'Pilih · untuk pendukung',
+  mapPickAuto: 'Kembali ke Otomatis (gratis)',
+  mapRecenter: 'Pusatkan',
+  mapDragHint: 'Geser untuk menjelajah',
 
   promisesTitle: 'Tiga janji.',
   promisesAccent: 'Tanpa syarat tersembunyi.',

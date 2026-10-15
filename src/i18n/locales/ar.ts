@@ -38,6 +38,11 @@ export const ar: Messages = {
   lockedBody: 'حتى ذلك الحين، تواصل التصفح عبر {city}، مجانًا وبلا حدود.',
   srSitesSee: 'ترى المواقع {place}.',
   srLocked: '{city} متاح للداعمين.',
+  mapPick: 'اختر هذا الخادم',
+  mapPickSupporter: 'اختر · للداعمين',
+  mapPickAuto: 'العودة إلى التلقائي (مجاناً)',
+  mapRecenter: 'إعادة التوسيط',
+  mapDragHint: 'اسحب للاستكشاف',
 
   promisesTitle: 'ثلاثة وعود.',
   promisesAccent: 'بلا شروط خفية.',

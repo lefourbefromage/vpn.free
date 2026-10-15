@@ -38,6 +38,11 @@ export const tr: Messages = {
   lockedBody: 'O zamana kadar {city} üzerinden ücretsiz ve sınırsız gezinmeye devam edersin.',
   srSitesSee: 'Siteler {place} görür.',
   srLocked: '{city} destekçilere açık.',
+  mapPick: 'Bu sunucuyu seç',
+  mapPickSupporter: 'Seç · destekçilere özel',
+  mapPickAuto: "Otomatik'e dön (ücretsiz)",
+  mapRecenter: 'Ortala',
+  mapDragHint: 'Keşfetmek için sürükle',
 
   promisesTitle: 'Üç söz.',
   promisesAccent: 'Gizli madde yok.',
