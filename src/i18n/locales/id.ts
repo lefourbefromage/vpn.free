@@ -8,9 +8,9 @@ export const id: Messages = {
   discord: 'Discord',
   menu: 'Menu',
 
-  heroTitle: 'Buka situs apa pun',
-  heroAccent: 'tanpa memasang apa pun.',
-  heroLead: 'Langsung di browser, tanpa akun. Situs melihat server kami, bukan kamu.',
+  heroTitle: 'VPN gratis,',
+  heroAccent: 'langsung di browser kamu.',
+  heroLead: 'Tanpa instal, tanpa akun. Situs melihat server kami, bukan kamu.',
   urlLabel: 'Alamat situs atau pencarian',
   urlPlaceholder: 'Masukkan URL atau cari',
   go: 'Buka',
@@ -38,6 +38,11 @@ export const id: Messages = {
   lockedBody: 'Sampai saat itu kamu tetap menjelajah lewat {city}, gratis dan tanpa batas.',
   srSitesSee: 'Situs melihat {place}.',
   srLocked: '{city} tersedia untuk pendukung.',
+  mapPick: 'Pilih server ini',
+  mapPickSupporter: 'Pilih · untuk pendukung',
+  mapPickAuto: 'Kembali ke Otomatis (gratis)',
+  mapRecenter: 'Pusatkan',
+  mapDragHint: 'Geser untuk menjelajah',
 
   promisesTitle: 'Tiga janji.',
   promisesAccent: 'Tanpa syarat tersembunyi.',
@@ -76,6 +81,8 @@ export const id: Messages = {
   joinDiscord: 'Gabung Discord kami',
   discordMsg1: 'thedailylens.com menampilkan halaman kosong lewat Paris.',
   discordMsg2: 'Terima kasih! Sudah diperbaiki di pembaruan hari ini.',
+  discordMsg3: 'Sekarang di aku juga sudah jalan, makasih!',
+  discordMsg4: 'Bisa cek weather.com berikutnya?',
   newsFirst: 'Kabar terbaru ada di sini lebih dulu',
 
   tagline: 'Buka situs apa pun tanpa memasang apa pun.',

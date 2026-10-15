@@ -12,13 +12,21 @@ import { useProto } from '../state/proto';
  * Site header. No navigation on purpose (HANDOFF §4): logo, "Sign in", "Support vpn.free".
  * Supporters (access in this browser) get the community links instead: Forum and Discord.
  * `aside` replaces the actions with a single quiet link (Cancel, Back to vpn.free…).
+ * `floating` pins the header to the top of the window, out of the flow: the homepage hides it while
+ * its hero shows the big logo, and slides it in once that logo has scrolled away.
  */
-export function Header({ aside }: { aside?: { label: string; to: string } }) {
+export function Header({
+  aside,
+  floating,
+}: {
+  aside?: { label: string; to: string };
+  floating?: 'hidden' | 'shown';
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
   const supporter = Boolean(useProto().state.supporter);
 
-  return (
+  const header = (
     <header className={styles.header}>
       <Link to="/" aria-label={t('home')} className={styles.logo}>
         <Logo className={styles.logoImg} />
@@ -88,5 +96,10 @@ export function Header({ aside }: { aside?: { label: string; to: string } }) {
         </Sheet>
       )}
     </header>
+  );
+
+  if (!floating) return header;
+  return (
+    <div className={`${styles.floating} ${floating === 'shown' ? styles.floatingShown : ''}`}>{header}</div>
   );
 }

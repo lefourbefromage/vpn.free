@@ -8,9 +8,9 @@ export const fr: Messages = {
   discord: 'Discord',
   menu: 'Menu',
 
-  heroTitle: "Ouvrez n'importe quel site",
-  heroAccent: 'sans rien installer.',
-  heroLead: 'Directement dans votre navigateur, sans compte. Les sites voient notre serveur, pas vous.',
+  heroTitle: 'Un VPN gratuit,',
+  heroAccent: 'directement dans votre navigateur.',
+  heroLead: 'Rien à installer, aucun compte. Les sites voient notre serveur, pas vous.',
   urlLabel: 'Adresse du site ou recherche',
   urlPlaceholder: 'Saisissez une URL ou une recherche',
   go: 'Go',
@@ -38,6 +38,11 @@ export const fr: Messages = {
   lockedBody: "En attendant, vous continuez de naviguer via {city}, gratuitement et sans limite.",
   srSitesSee: 'Les sites voient {place}.',
   srLocked: '{city} est réservé aux soutiens.',
+  mapPick: 'Sélectionner ce serveur',
+  mapPickSupporter: 'Sélectionner · réservé aux soutiens',
+  mapPickAuto: 'Revenir en Automatique (gratuit)',
+  mapRecenter: 'Recentrer',
+  mapDragHint: 'Glissez pour explorer',
 
   promisesTitle: 'Trois promesses.',
   promisesAccent: 'Sans petites lignes.',
@@ -76,6 +81,8 @@ export const fr: Messages = {
   joinDiscord: 'Rejoindre notre Discord',
   discordMsg1: 'thedailylens.com affiche une page blanche via Paris.',
   discordMsg2: "Merci ! Corrigé dans la mise à jour d'aujourd'hui.",
+  discordMsg3: 'Chez moi aussi ça marche maintenant, merci !',
+  discordMsg4: 'Vous pourriez regarder weather.com ensuite ?',
   newsFirst: 'Les nouvelles arrivent ici en premier',
 
   tagline: "Ouvrez n'importe quel site sans rien installer.",

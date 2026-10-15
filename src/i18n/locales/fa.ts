@@ -8,9 +8,9 @@ export const fa: Messages = {
   discord: 'Discord',
   menu: 'منو',
 
-  heroTitle: 'هر سایتی را باز کنید',
-  heroAccent: 'بدون نصب هیچ چیز.',
-  heroLead: 'مستقیم در مرورگر، بدون حساب کاربری. سایت‌ها سرور ما را می‌بینند، نه شما را.',
+  heroTitle: 'یک VPN رایگان،',
+  heroAccent: 'مستقیم در مرورگر شما.',
+  heroLead: 'بدون نصب، بدون حساب کاربری. سایت‌ها سرور ما را می‌بینند، نه شما را.',
   urlLabel: 'نشانی سایت یا جست‌وجو',
   urlPlaceholder: 'نشانی را وارد کنید یا جست‌وجو کنید',
   go: 'برو',
@@ -38,6 +38,11 @@ export const fa: Messages = {
   lockedBody: 'تا آن زمان، از طریق {city} رایگان و نامحدود به گشت‌وگذار ادامه می‌دهید.',
   srSitesSee: 'سایت‌ها {place} را می‌بینند.',
   srLocked: '{city} ویژهٔ حامیان است.',
+  mapPick: 'انتخاب این سرور',
+  mapPickSupporter: 'انتخاب · ویژهٔ حامیان',
+  mapPickAuto: 'بازگشت به خودکار (رایگان)',
+  mapRecenter: 'بازگشت به مرکز',
+  mapDragHint: 'برای کاوش بکشید',
 
   promisesTitle: 'سه قول.',
   promisesAccent: 'بدون شرط پنهان.',
@@ -76,6 +81,8 @@ export const fa: Messages = {
   joinDiscord: 'به Discord ما بپیوندید',
   discordMsg1: 'thedailylens.com از طریق پاریس صفحهٔ خالی نشان می‌دهد.',
   discordMsg2: 'ممنون! در به‌روزرسانی امروز درست شد.',
+  discordMsg3: 'الان برای من هم کار می‌کند، ممنون!',
+  discordMsg4: 'می‌شود بعدش weather.com را هم بررسی کنید؟',
   newsFirst: 'خبرها اول اینجا می‌رسند',
 
   tagline: 'هر سایتی را بدون نصب هیچ چیز باز کنید.',

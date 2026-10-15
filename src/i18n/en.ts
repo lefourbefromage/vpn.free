@@ -10,9 +10,9 @@ export const en = {
   menu: 'Menu',
 
   // Hero
-  heroTitle: 'Open any website',
-  heroAccent: 'without installing anything.',
-  heroLead: 'Right in your browser, no account. Sites see our server, not you.',
+  heroTitle: 'A free VPN,',
+  heroAccent: 'right in your browser.',
+  heroLead: 'No install, no account. Sites see our server, not you.',
   urlLabel: 'Website address or search',
   urlPlaceholder: 'Enter a URL or search',
   go: 'Go',
@@ -42,6 +42,11 @@ export const en = {
   lockedBody: 'Until then you keep browsing through {city}, free and unlimited.',
   srSitesSee: 'Sites see {place}.',
   srLocked: '{city} is available for supporters.',
+  mapPick: 'Select this server',
+  mapPickSupporter: 'Select · for supporters',
+  mapPickAuto: 'Back to Automatic (free)',
+  mapRecenter: 'Recenter',
+  mapDragHint: 'Drag to explore',
 
   // Promises
   promisesTitle: 'Three promises.',
@@ -83,6 +88,8 @@ export const en = {
   joinDiscord: 'Join our Discord',
   discordMsg1: 'thedailylens.com shows a blank page through Paris.',
   discordMsg2: "Thanks! Fixed in today's update.",
+  discordMsg3: 'Works for me too now, thanks!',
+  discordMsg4: 'Could you look at weather.com next?',
   newsFirst: 'Get the news here first',
 
   // Footer

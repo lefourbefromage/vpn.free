@@ -1,6 +1,17 @@
 .stage {
   position: relative;
   flex: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  /* Vertical swipes still scroll the page on touch screens; horizontal ones pan the map. */
+  touch-action: pan-y;
+}
+.dragging {
+  cursor: grabbing;
+}
+.dragging .city {
+  pointer-events: none;
 }
 
 .canvas {
@@ -49,10 +60,15 @@
   }
 }
 
-/* ---------- City pins (label on hover) ---------- */
+/* ---------- City pins (clickable; label and hint on hover) ---------- */
 
 .city {
   position: absolute;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
   width: 28px;
   height: 28px;
   margin: -14px 0 0 -14px;
@@ -77,16 +93,25 @@
   position: relative;
   transition: transform 0.2s ease;
 }
-.city:hover::before {
+.city:hover::before,
+.city:focus-visible::before {
   box-shadow:
     0 0 0 1.5px var(--lilac),
     0 0 20px rgba(91, 59, 255, 0.8);
 }
-.city:hover svg {
+.city:hover svg,
+.city:focus-visible svg {
   transform: scale(1.2);
 }
-.city span {
+.city:focus-visible {
+  outline: none;
+}
+.tip {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
   left: 50%;
   bottom: 26px;
   transform: translate(-50%, 4px);
@@ -100,12 +125,16 @@
   background: var(--surface-tooltip);
   border: 1px solid var(--border-strong);
   box-shadow: 0 8px 20px rgba(6, 2, 22, 0.5);
-  font-family: var(--font-mono);
   font-size: 12px;
   color: #fff;
   white-space: nowrap;
 }
-.city:hover span {
+.tipHint {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+}
+.city:hover .tip,
+.city:focus-visible .tip {
   opacity: 1;
   transform: translate(-50%, 0);
 }
@@ -116,10 +145,30 @@
     0 0 0 1px rgba(162, 143, 255, 0.45),
     0 0 10px rgba(91, 59, 255, 0.5);
 }
-.mobile .city span {
+.mobile .tip {
   bottom: 24px;
   padding: 4px 8px;
   font-size: 11px;
+}
+
+/* Automatic city: white star. Supporter cities: lilac star and hint. */
+.cityFree svg {
+  color: #fff;
+}
+.cityLilac svg {
+  color: var(--lilac);
+}
+.cityLilac::before {
+  background: rgba(24, 14, 56, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(162, 143, 255, 0.3),
+    0 0 12px rgba(162, 143, 255, 0.3);
+}
+.cityLilac .tip {
+  border-color: var(--border-lilac);
+}
+.cityLilac .tipHint {
+  color: var(--lilac);
 }
 
 .cityTiny {
@@ -142,6 +191,10 @@
   height: 0;
 }
 
+.halo,
+.pulse {
+  pointer-events: none;
+}
 .halo {
   position: absolute;
   left: -56px;
@@ -241,6 +294,9 @@
   border-color: rgba(162, 143, 255, 0.4);
   padding: 12px 16px;
   gap: 4px;
+  /* Several lines (city, "for supporters", link): read better aligned on one edge. */
+  align-items: flex-start;
+  text-align: start;
 }
 .below {
   top: 28px;
@@ -379,4 +435,83 @@
 .markerSm .tNote {
   font-size: 11px;
   color: rgba(255, 255, 255, 0.72);
+}
+
+/* ---------- Recenter (after a drag) ---------- */
+
+.recenter {
+  position: absolute;
+  /* Above the "Ready to connect" card, where the drag hint was. */
+  left: 690px;
+  top: 536px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: rgba(17, 10, 40, 0.9);
+  color: var(--lavender);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  animation: var(--kf-fade) 0.3s ease-out both;
+}
+.recenter:hover {
+  border-color: var(--lilac);
+}
+.mobile .recenter {
+  left: 50%;
+  top: auto;
+  bottom: 14px;
+  transform: translateX(-50%);
+  padding: 7px 12px;
+  font-size: 13px;
+}
+
+/* ---------- Drag hint (until the first drag) ---------- */
+
+.dragHint {
+  position: absolute;
+  left: 690px;
+  top: 540px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(17, 10, 40, 0.75);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-body);
+  font-size: 13px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: var(--kf-fade) 0.6s ease-out 1.6s both;
+}
+.dragHand {
+  color: var(--lavender);
+  animation: dragSwipe 1.6s ease-in-out infinite alternate;
+}
+@keyframes dragSwipe {
+  from {
+    transform: translateX(-5px) rotate(-10deg);
+  }
+  to {
+    transform: translateX(5px) rotate(8deg);
+  }
+}
+.mobile .dragHint {
+  left: 50%;
+  top: auto;
+  bottom: 14px;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dragHand {
+    animation: none;
+  }
 }

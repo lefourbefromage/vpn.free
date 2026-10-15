@@ -15,12 +15,16 @@
 
 .protectedSlot {
   position: absolute;
-  left: 540px;
+  left: 690px;
   top: 590px;
+  transform: translateX(-50%);
 }
 
 .protected {
-  width: 300px;
+  /* As wide as its text (one line when the screen allows), never narrower than the design. */
+  width: max-content;
+  min-width: 300px;
+  max-width: calc(100vw - 32px);
   padding: 16px 20px;
   border-radius: var(--r-card-sm);
   /* Near-opaque so the map dots don't show through the text. */
@@ -53,10 +57,33 @@
   color: var(--lilac);
 }
 
-.locked {
-  display: inline-flex;
+/* Supporter city tooltip: the star in its own column, the lines aligned beside it. */
+.lockedTip {
+  display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
+  text-align: start;
+}
+.lockedTip > svg {
+  flex: none;
+  color: #fff;
+}
+/* "Your location" tooltip: lines aligned on the left edge. */
+.startTip {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: start;
+}
+.lockedTipText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.locked {
   font-size: 14px;
   font-weight: 600;
 }

@@ -8,9 +8,9 @@ export const sv: Messages = {
   discord: 'Discord',
   menu: 'Meny',
 
-  heroTitle: 'Öppna vilken webbplats som helst',
-  heroAccent: 'utan att installera något.',
-  heroLead: 'Direkt i webbläsaren, inget konto. Webbplatser ser vår server, inte dig.',
+  heroTitle: 'En gratis VPN,',
+  heroAccent: 'direkt i din webbläsare.',
+  heroLead: 'Inget att installera, inget konto. Webbplatser ser vår server, inte dig.',
   urlLabel: 'Webbadress eller sökning',
   urlPlaceholder: 'Ange en URL eller sök',
   go: 'Kör',
@@ -38,6 +38,11 @@ export const sv: Messages = {
   lockedBody: 'Tills dess surfar du vidare via {city}, gratis och obegränsat.',
   srSitesSee: 'Webbplatser ser {place}.',
   srLocked: '{city} är tillgänglig för supportrar.',
+  mapPick: 'Välj den här servern',
+  mapPickSupporter: 'Välj · för supportrar',
+  mapPickAuto: 'Tillbaka till Automatiskt (gratis)',
+  mapRecenter: 'Centrera',
+  mapDragHint: 'Dra för att utforska',
 
   promisesTitle: 'Tre löften.',
   promisesAccent: 'Inget finstilt.',
@@ -76,6 +81,8 @@ export const sv: Messages = {
   joinDiscord: 'Gå med i vår Discord',
   discordMsg1: 'thedailylens.com visar en tom sida via Paris.',
   discordMsg2: 'Tack! Fixat i dagens uppdatering.',
+  discordMsg3: 'Funkar för mig också nu, tack!',
+  discordMsg4: 'Kan ni kolla på weather.com härnäst?',
   newsFirst: 'Nyheterna kommer hit först',
 
   tagline: 'Öppna vilken webbplats som helst utan att installera något.',

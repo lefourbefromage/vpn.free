@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { DotMap, TooltipLines, type MapMarker } from '../../components/DotMap';
+import { DotMap, TooltipLines, type MapMarker, type MapPin } from '../../components/DotMap';
 import { Icon } from '../../components/Icon';
 import { LogoSymbol } from '../../components/Logo';
 import { SERVERS, autoServer, getServer, getVisitor } from '../../data/servers';
@@ -14,8 +14,18 @@ import { useT } from '../../i18n';
  *   when the destination is in another country. Same country: just the destination pin.
  * - City picked without supporter access: the city is "available for supporters" and the
  *   traffic still leaves from Paris.
+ * - The other cities are stars you can click (or drag the map to find): the Automatic city
+ *   goes back to Automatic, supporter cities are lilac.
  */
-export function MapSection({ serverId, supporter }: { serverId: string | null; supporter: boolean }) {
+export function MapSection({
+  serverId,
+  supporter,
+  onSelect,
+}: {
+  serverId: string | null;
+  supporter: boolean;
+  onSelect: (serverId: string | null) => void;
+}) {
   const isMobile = useIsMobile();
   const t = useT();
   const visitor = getVisitor(useProto().state.visitorId);
@@ -37,17 +47,17 @@ export function MapSection({ serverId, supporter }: { serverId: string | null; s
         tooltip: isMobile ? (
           <TooltipLines value={targetLabel} note={t('supporterLocation')} />
         ) : (
-          <>
-            <TooltipLines value={targetLabel} />
-            <span className={styles.locked}>
-              <Icon name="star" size={12} className="lilac" />
-              {t('forSupporters')}
-            </span>
-            <Link to="/support">
-              {t('supportCta')}
-              <Icon name="arrowRight" size={14} />
-            </Link>
-          </>
+          <div className={styles.lockedTip}>
+            <Icon name="star" size={18} />
+            <div className={styles.lockedTipText}>
+              <TooltipLines value={targetLabel} />
+              <span className={styles.locked}>{t('forSupporters')}</span>
+              <Link to="/support">
+                {t('supportCta')}
+                <Icon name="arrowRight" size={14} />
+              </Link>
+            </div>
+          </div>
         ),
       }
     : {
@@ -61,13 +71,27 @@ export function MapSection({ serverId, supporter }: { serverId: string | null; s
     lat: visitor.lat,
     lon: visitor.lon,
     kind: 'dot',
-    tooltip: <TooltipLines label={t('yourLocation')} value={`${visitor.city}, ${visitor.country}`} note={t('approxIp')} />,
+    tooltip: (
+      <div className={styles.startTip}>
+        <TooltipLines label={t('yourLocation')} value={`${visitor.city}, ${visitor.country}`} note={t('approxIp')} />
+      </div>
+    ),
   };
 
   const origin = crossBorder ? visitorMarker : targetMarker;
   const destination = crossBorder ? targetMarker : undefined;
 
-  const pins = SERVERS.filter((s) => s.id !== target.id);
+  const pins: MapPin[] = SERVERS.filter((s) => s.id !== target.id).map((s) => {
+    const auto = s.id === autoServer.id;
+    return {
+      id: s.id,
+      lat: s.lat,
+      lon: s.lon,
+      label: `${s.city}, ${s.country}`,
+      hint: auto ? t('mapPickAuto') : supporter ? t('mapPick') : t('mapPickSupporter'),
+      tone: auto ? 'free' : supporter ? 'default' : 'lilac',
+    };
+  });
 
   const protectedCard = (
     <div className={styles.protected}>
@@ -92,7 +116,15 @@ export function MapSection({ serverId, supporter }: { serverId: string | null; s
         {locked && ` ${t('srLocked', { city: picked!.city })}`}
       </p>
       <div className={styles.viewport}>
-        <DotMap size={size} pins={pins} origin={origin} destination={destination}>
+        <DotMap
+          size={size}
+          pins={pins}
+          onPinSelect={(id) => onSelect(id === autoServer.id ? null : id)}
+          recenterLabel={t('mapRecenter')}
+          dragHint={t('mapDragHint')}
+          origin={origin}
+          destination={destination}
+        >
           {!isMobile && <div className={styles.protectedSlot}>{protectedCard}</div>}
         </DotMap>
       </div>

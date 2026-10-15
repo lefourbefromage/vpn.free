@@ -8,9 +8,9 @@ export const ar: Messages = {
   discord: 'Discord',
   menu: 'القائمة',
 
-  heroTitle: 'افتح أي موقع',
-  heroAccent: 'دون تثبيت أي شيء.',
-  heroLead: 'مباشرة في متصفحك، بلا حساب. ترى المواقع خادمنا، لا أنت.',
+  heroTitle: 'VPN مجاني،',
+  heroAccent: 'مباشرة في متصفحك.',
+  heroLead: 'بلا تثبيت ولا حساب. ترى المواقع خادمنا، لا أنت.',
   urlLabel: 'عنوان الموقع أو البحث',
   urlPlaceholder: 'أدخل رابطًا أو ابحث',
   go: 'انتقال',
@@ -38,6 +38,11 @@ export const ar: Messages = {
   lockedBody: 'حتى ذلك الحين، تواصل التصفح عبر {city}، مجانًا وبلا حدود.',
   srSitesSee: 'ترى المواقع {place}.',
   srLocked: '{city} متاح للداعمين.',
+  mapPick: 'اختر هذا الخادم',
+  mapPickSupporter: 'اختر · للداعمين',
+  mapPickAuto: 'العودة إلى التلقائي (مجاناً)',
+  mapRecenter: 'إعادة التوسيط',
+  mapDragHint: 'اسحب للاستكشاف',
 
   promisesTitle: 'ثلاثة وعود.',
   promisesAccent: 'بلا شروط خفية.',
@@ -76,6 +81,8 @@ export const ar: Messages = {
   joinDiscord: 'انضم إلى Discord',
   discordMsg1: 'يظهر thedailylens.com صفحة فارغة عبر باريس.',
   discordMsg2: 'شكرًا! تم الإصلاح في تحديث اليوم.',
+  discordMsg3: 'يعمل عندي أيضًا الآن، شكرًا!',
+  discordMsg4: 'هل يمكنكم النظر في weather.com بعد ذلك؟',
   newsFirst: 'الأخبار تصل هنا أولًا',
 
   tagline: 'افتح أي موقع دون تثبيت أي شيء.',

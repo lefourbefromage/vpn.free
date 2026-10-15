@@ -8,9 +8,9 @@ export const zh: Messages = {
   discord: 'Discord',
   menu: '菜单',
 
-  heroTitle: '打开任何网站',
-  heroAccent: '无需安装任何东西。',
-  heroLead: '直接在浏览器中使用，无需账户。网站看到的是我们的服务器，而不是你。',
+  heroTitle: '免费 VPN，',
+  heroAccent: '直接在浏览器中使用。',
+  heroLead: '无需安装，无需账户。网站看到的是我们的服务器，而不是你。',
   urlLabel: '网址或搜索',
   urlPlaceholder: '输入网址或搜索',
   go: '前往',
@@ -38,6 +38,11 @@ export const zh: Messages = {
   lockedBody: '在此之前，你可以继续通过{city}免费、无限制地浏览。',
   srSitesSee: '网站看到的是{place}。',
   srLocked: '{city}为支持者专享。',
+  mapPick: '选择此服务器',
+  mapPickSupporter: '选择 · 支持者专享',
+  mapPickAuto: '返回自动（免费）',
+  mapRecenter: '回到中心',
+  mapDragHint: '拖动以探索',
 
   promisesTitle: '三个承诺。',
   promisesAccent: '没有附加条款。',
@@ -76,6 +81,8 @@ export const zh: Messages = {
   joinDiscord: '加入我们的 Discord',
   discordMsg1: '通过巴黎访问 thedailylens.com 时显示空白页。',
   discordMsg2: '谢谢！已在今天的更新中修复。',
+  discordMsg3: '我这边现在也好了，谢谢！',
+  discordMsg4: '接下来能看看 weather.com 吗？',
   newsFirst: '最新消息首发于此',
 
   tagline: '打开任何网站，无需安装任何东西。',

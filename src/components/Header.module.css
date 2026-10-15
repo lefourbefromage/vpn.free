@@ -18,6 +18,38 @@
   width: auto;
 }
 
+/* Homepage: fixed bar fading into the page, hidden above the window until the hero logo
+   scrolls away. `visibility` keeps the hidden links out of the tab order. */
+.floating {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  padding-bottom: 28px;
+  background: linear-gradient(to bottom, var(--bg) 0%, var(--bg) 45%, rgba(17, 10, 40, 0.7) 70%, rgba(17, 10, 40, 0) 100%);
+  pointer-events: none;
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition:
+    transform 0.3s var(--ease-out),
+    visibility 0s linear 0.3s;
+}
+.floatingShown {
+  transform: none;
+  visibility: visible;
+  transition: transform 0.3s var(--ease-out);
+}
+/* The fade below the bar lets clicks through to the page; the bar itself stays clickable. */
+.floating .header {
+  pointer-events: auto;
+  padding-block: 14px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating,
+  .floatingShown {
+    transition: none;
+  }
+}
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -85,6 +117,9 @@
   }
   .logoImg {
     height: 24px;
+  }
+  .floating .header {
+    padding-block: 0;
   }
   .actions {
     gap: 8px;

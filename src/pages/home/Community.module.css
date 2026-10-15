@@ -62,6 +62,10 @@
   padding: 0 28px;
   font-size: 19px;
 }
+/* Shown when the big Discord logo is gone from the illustration (medium screens). */
+.btnLogo {
+  display: none;
+}
 
 /* ---------- Illustration ---------- */
 
@@ -135,6 +139,12 @@
   font-size: 14px;
   color: rgba(255, 255, 255, 0.62);
 }
+.channelName {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .channelActive {
   background: rgba(255, 255, 255, 0.08);
   font-weight: 600;
@@ -179,6 +189,12 @@
 .msgAvatarTeam {
   background: var(--primary);
 }
+.msgAvatarAlt {
+  background: #6b3f8f;
+}
+.msgExtra {
+  display: none;
+}
 .msgBody {
   display: flex;
   flex-direction: column;
@@ -216,9 +232,10 @@
 }
 
 .news {
+  /* Placed against the thread card (its parent), overlapping its bottom edge. */
   position: absolute;
-  inset-inline-start: 63px;
-  top: 259px;
+  inset-inline-start: -122px;
+  top: calc(100% - 20px);
   height: 40px;
   padding: 0 16px;
   border-radius: var(--r-pill);
@@ -256,6 +273,61 @@
   }
 }
 
+/* Medium screens: the text has the full width, so the lead runs on one line when it fits. */
+/* Medium and small screens: the illustration takes the full width and reads like the
+   Discord app, the server sidebar and the channel side by side in one window. The big logo
+   moves into the button. */
+@media (max-width: 960px) {
+  .lead {
+    max-width: none;
+  }
+  .visual {
+    max-width: none;
+    height: auto;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: stretch;
+  }
+  .watermark {
+    display: none;
+  }
+  .server,
+  .thread {
+    position: relative;
+    inset-inline-start: auto;
+    top: auto;
+    border-radius: 0;
+  }
+  .server {
+    flex: none;
+    width: 240px;
+    border-color: rgba(88, 101, 242, 0.55);
+    border-inline-end: none;
+    border-start-start-radius: var(--r-card-sm);
+    border-end-start-radius: var(--r-card-sm);
+  }
+  .thread {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+    /* Room for the news pill hanging off the bottom edge. */
+    padding-bottom: 30px;
+    border-start-end-radius: var(--r-card-sm);
+    border-end-end-radius: var(--r-card-sm);
+  }
+  /* Overlaps the bottom edge of the window, under the channel (clear of the sidebar). */
+  .news {
+    inset-inline-start: 18px;
+    top: calc(100% - 20px);
+  }
+  .btnLogo {
+    display: block;
+  }
+  .msgExtra {
+    display: flex;
+  }
+}
+
 @media (max-width: 767px) {
   .section {
     padding: 80px 16px 0;
@@ -285,21 +357,11 @@
     width: 420px;
     height: 340px;
   }
-  .watermark {
-    inset-inline-start: auto;
-    inset-inline-end: 30px;
-    top: -5px;
-    width: 120px;
-    height: 123px;
-    transform: rotate(24deg);
-    filter: drop-shadow(0 0 28px rgba(88, 101, 242, 0.55));
-  }
   .server {
-    inset-inline-start: 0;
-    top: 0;
-    width: 196px;
+    width: clamp(116px, 36%, 196px);
     padding: 10px;
-    border-radius: 16px;
+    border-start-start-radius: 16px;
+    border-end-start-radius: 16px;
     gap: 2px;
   }
   .serverHead {
@@ -325,17 +387,10 @@
     font-size: 13px;
   }
   .thread {
-    inset-inline-start: auto;
-    inset-inline-end: 0;
-    top: 104px;
-    width: 290px;
-    max-width: calc(100% - 20px);
-    padding: 14px;
-    border-radius: 16px;
+    padding: 14px 14px 28px;
+    border-start-end-radius: 16px;
+    border-end-end-radius: 16px;
     gap: 12px;
-  }
-  .threadTitle {
-    display: none;
   }
   .msg {
     gap: 10px;
@@ -362,9 +417,15 @@
     border-radius: 4px;
     font-size: 9px;
   }
+  /* Centred under the whole window (the thread is too narrow to hang it from). */
+  .thread {
+    position: static;
+  }
   .news {
-    inset-inline-start: 106px;
-    top: 236px;
+    inset-inline: 0;
+    width: max-content;
+    margin-inline: auto;
+    top: calc(100% - 18px);
     height: 36px;
     padding: 0 14px;
     gap: 8px;
@@ -373,5 +434,21 @@
   .discordBtn {
     display: flex;
     width: 100%;
+  }
+}
+
+/* Extra messages keep the thread about as tall as the sidebar: one on phones. */
+@media (max-width: 767px) {
+  .msgMore {
+    display: none;
+  }
+}
+/* Small phones: no room for two columns, the window is just the #site-requests channel. */
+@media (max-width: 480px) {
+  .server {
+    display: none;
+  }
+  .thread {
+    border-radius: 16px;
   }
 }

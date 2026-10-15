@@ -8,9 +8,9 @@ export const tr: Messages = {
   discord: 'Discord',
   menu: 'Menü',
 
-  heroTitle: 'Her siteyi aç',
-  heroAccent: 'hiçbir şey yüklemeden.',
-  heroLead: 'Doğrudan tarayıcında, hesap gerekmez. Siteler seni değil, sunucumuzu görür.',
+  heroTitle: 'Ücretsiz bir VPN,',
+  heroAccent: 'doğrudan tarayıcında.',
+  heroLead: 'Kurulum yok, hesap yok. Siteler seni değil, sunucumuzu görür.',
   urlLabel: 'Site adresi veya arama',
   urlPlaceholder: 'Bir URL gir veya ara',
   go: 'Git',
@@ -38,6 +38,11 @@ export const tr: Messages = {
   lockedBody: 'O zamana kadar {city} üzerinden ücretsiz ve sınırsız gezinmeye devam edersin.',
   srSitesSee: 'Siteler {place} görür.',
   srLocked: '{city} destekçilere açık.',
+  mapPick: 'Bu sunucuyu seç',
+  mapPickSupporter: 'Seç · destekçilere özel',
+  mapPickAuto: "Otomatik'e dön (ücretsiz)",
+  mapRecenter: 'Ortala',
+  mapDragHint: 'Keşfetmek için sürükle',
 
   promisesTitle: 'Üç söz.',
   promisesAccent: 'Gizli madde yok.',
@@ -76,6 +81,8 @@ export const tr: Messages = {
   joinDiscord: "Discord'umuza katıl",
   discordMsg1: 'thedailylens.com, Paris üzerinden boş sayfa gösteriyor.',
   discordMsg2: 'Teşekkürler! Bugünkü güncellemede düzeltildi.',
+  discordMsg3: 'Bende de çalışıyor artık, teşekkürler!',
+  discordMsg4: "Sırada weather.com'a bakabilir misiniz?",
   newsFirst: 'Haberler önce burada',
 
   tagline: 'Her siteyi hiçbir şey yüklemeden aç.',
