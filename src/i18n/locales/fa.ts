@@ -81,6 +81,8 @@ export const fa: Messages = {
   joinDiscord: 'به Discord ما بپیوندید',
   discordMsg1: 'thedailylens.com از طریق پاریس صفحهٔ خالی نشان می‌دهد.',
   discordMsg2: 'ممنون! در به‌روزرسانی امروز درست شد.',
+  discordMsg3: 'الان برای من هم کار می‌کند، ممنون!',
+  discordMsg4: 'می‌شود بعدش weather.com را هم بررسی کنید؟',
   newsFirst: 'خبرها اول اینجا می‌رسند',
 
   tagline: 'هر سایتی را بدون نصب هیچ چیز باز کنید.',

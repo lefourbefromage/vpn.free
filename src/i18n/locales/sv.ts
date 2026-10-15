@@ -81,6 +81,8 @@ export const sv: Messages = {
   joinDiscord: 'Gå med i vår Discord',
   discordMsg1: 'thedailylens.com visar en tom sida via Paris.',
   discordMsg2: 'Tack! Fixat i dagens uppdatering.',
+  discordMsg3: 'Funkar för mig också nu, tack!',
+  discordMsg4: 'Kan ni kolla på weather.com härnäst?',
   newsFirst: 'Nyheterna kommer hit först',
 
   tagline: 'Öppna vilken webbplats som helst utan att installera något.',

@@ -81,6 +81,8 @@ export const id: Messages = {
   joinDiscord: 'Gabung Discord kami',
   discordMsg1: 'thedailylens.com menampilkan halaman kosong lewat Paris.',
   discordMsg2: 'Terima kasih! Sudah diperbaiki di pembaruan hari ini.',
+  discordMsg3: 'Sekarang di aku juga sudah jalan, makasih!',
+  discordMsg4: 'Bisa cek weather.com berikutnya?',
   newsFirst: 'Kabar terbaru ada di sini lebih dulu',
 
   tagline: 'Buka situs apa pun tanpa memasang apa pun.',

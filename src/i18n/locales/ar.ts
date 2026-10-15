@@ -81,6 +81,8 @@ export const ar: Messages = {
   joinDiscord: 'انضم إلى Discord',
   discordMsg1: 'يظهر thedailylens.com صفحة فارغة عبر باريس.',
   discordMsg2: 'شكرًا! تم الإصلاح في تحديث اليوم.',
+  discordMsg3: 'يعمل عندي أيضًا الآن، شكرًا!',
+  discordMsg4: 'هل يمكنكم النظر في weather.com بعد ذلك؟',
   newsFirst: 'الأخبار تصل هنا أولًا',
 
   tagline: 'افتح أي موقع دون تثبيت أي شيء.',

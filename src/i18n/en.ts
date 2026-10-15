@@ -88,6 +88,8 @@ export const en = {
   joinDiscord: 'Join our Discord',
   discordMsg1: 'thedailylens.com shows a blank page through Paris.',
   discordMsg2: "Thanks! Fixed in today's update.",
+  discordMsg3: 'Works for me too now, thanks!',
+  discordMsg4: 'Could you look at weather.com next?',
   newsFirst: 'Get the news here first',
 
   // Footer

@@ -27,6 +27,7 @@ export function Community() {
 
         <div className={styles.cta} data-reveal style={stagger(3)}>
           <ButtonAnchor href="#discord" variant="discord" size="xl" className={styles.discordBtn}>
+            <Icon name="discord" size={22} className={styles.btnLogo} />
             {t('joinDiscord')}
             <Icon name="arrowRight" size={18} strokeWidth={2.2} />
           </ButtonAnchor>
@@ -46,7 +47,7 @@ export function Community() {
             {CHANNELS.map((c) => (
               <div key={c} className={`${styles.channel} ${c === 'site-requests' ? styles.channelActive : ''}`}>
                 <span className="mono">#</span>
-                {c}
+                <span className={styles.channelName}>{c}</span>
               </div>
             ))}
           </div>
@@ -78,12 +79,35 @@ export function Community() {
                 <span className={styles.msgText}>{t('discordMsg2')}</span>
               </div>
             </div>
+            {/* More of the conversation, shown when the thread has the room (see the CSS). */}
+            <div className={`${styles.msg} ${styles.msgExtra}`}>
+              <span className={`${styles.msgAvatar} ${styles.msgAvatarAlt}`}>LE</span>
+              <div className={styles.msgBody}>
+                <span className={styles.msgMeta}>
+                  <span className={styles.msgName}>lea</span>
+                  <span className={`mono ${styles.msgTime}`}>11:04</span>
+                </span>
+                <span className={styles.msgText}>{t('discordMsg3')}</span>
+              </div>
+            </div>
+            <div className={`${styles.msg} ${styles.msgExtra} ${styles.msgMore}`}>
+              <span className={styles.msgAvatar}>JO</span>
+              <div className={styles.msgBody}>
+                <span className={styles.msgMeta}>
+                  <span className={styles.msgName}>jo</span>
+                  <span className={`mono ${styles.msgTime}`}>11:20</span>
+                </span>
+                <span className={styles.msgText}>{t('discordMsg4')}</span>
+              </div>
+            </div>
+            {/* Hangs off the bottom of the thread, so it follows the card when a translation
+                makes the messages longer. */}
+            <div className={styles.news}>
+              <span className={styles.newsDot} />
+              {t('newsFirst')}
+            </div>
           </div>
 
-          <div className={styles.news}>
-            <span className={styles.newsDot} />
-            {t('newsFirst')}
-          </div>
         </div>
       </div>
     </section>

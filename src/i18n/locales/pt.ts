@@ -81,6 +81,8 @@ export const pt: Messages = {
   joinDiscord: 'Entrar no nosso Discord',
   discordMsg1: 'thedailylens.com mostra uma página em branco via Paris.',
   discordMsg2: 'Valeu! Corrigido na atualização de hoje.',
+  discordMsg3: 'Agora funciona pra mim também, valeu!',
+  discordMsg4: 'Dá pra olhar o weather.com depois?',
   newsFirst: 'As novidades chegam aqui primeiro',
 
   tagline: 'Abra qualquer site sem instalar nada.',

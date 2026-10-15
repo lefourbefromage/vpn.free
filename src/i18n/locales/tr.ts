@@ -81,6 +81,8 @@ export const tr: Messages = {
   joinDiscord: "Discord'umuza katıl",
   discordMsg1: 'thedailylens.com, Paris üzerinden boş sayfa gösteriyor.',
   discordMsg2: 'Teşekkürler! Bugünkü güncellemede düzeltildi.',
+  discordMsg3: 'Bende de çalışıyor artık, teşekkürler!',
+  discordMsg4: "Sırada weather.com'a bakabilir misiniz?",
   newsFirst: 'Haberler önce burada',
 
   tagline: 'Her siteyi hiçbir şey yüklemeden aç.',

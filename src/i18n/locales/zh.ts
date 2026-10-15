@@ -81,6 +81,8 @@ export const zh: Messages = {
   joinDiscord: '加入我们的 Discord',
   discordMsg1: '通过巴黎访问 thedailylens.com 时显示空白页。',
   discordMsg2: '谢谢！已在今天的更新中修复。',
+  discordMsg3: '我这边现在也好了，谢谢！',
+  discordMsg4: '接下来能看看 weather.com 吗？',
   newsFirst: '最新消息首发于此',
 
   tagline: '打开任何网站，无需安装任何东西。',

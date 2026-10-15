@@ -81,6 +81,8 @@ export const de: Messages = {
   joinDiscord: 'Unserem Discord beitreten',
   discordMsg1: 'thedailylens.com zeigt über Paris eine leere Seite.',
   discordMsg2: 'Danke! Im heutigen Update behoben.',
+  discordMsg3: 'Bei mir klappt es jetzt auch, danke!',
+  discordMsg4: 'Könnt ihr euch als Nächstes weather.com ansehen?',
   newsFirst: 'Neuigkeiten gibt es hier zuerst',
 
   tagline: 'Öffne jede Website, ohne etwas zu installieren.',
