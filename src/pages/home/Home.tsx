@@ -1,8 +1,9 @@
-import { useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { Icon } from '../../components/Icon';
+import { Logo } from '../../components/Logo';
 import { ServerPicker } from '../../components/ServerPicker';
 import { FieldError } from '../../components/ui';
 import { autoServer, getServer } from '../../data/servers';
@@ -48,6 +49,17 @@ export function Home({ backdrop, backdropUrl }: HomeProps) {
     next.delete('server');
     setParams(next, { replace: true });
   }, [paramServer]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // The header slides in once the hero logo has left the window.
+  const heroLogo = useRef<HTMLDivElement>(null);
+  const [pastLogo, setPastLogo] = useState(false);
+  useEffect(() => {
+    const el = heroLogo.current;
+    if (!el || backdrop || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(([e]) => setPastLogo(!e.isIntersecting && e.boundingClientRect.top < 0));
+    io.observe(el);
+    return () => io.disconnect();
+  }, [backdrop]);
 
   // React 18 has no `inert` prop: set it on the DOM node.
   useEffect(() => {
@@ -104,10 +116,13 @@ export function Home({ backdrop, backdropUrl }: HomeProps) {
 
   return (
     <div ref={ref} className={styles.page} aria-hidden={backdrop || undefined}>
-      <Header />
+      <Header floating={pastLogo ? 'shown' : 'hidden'} />
 
       <section aria-labelledby="hero-title" className={styles.hero}>
         <div aria-hidden="true" className={styles.heroGlow} />
+        <div ref={heroLogo} className={styles.heroLogo}>
+          <Logo className={styles.heroLogoImg} />
+        </div>
         <h1 id="hero-title" className={styles.title}>
           {t('heroTitle')} <span className={styles.titleAccent}>{t('heroAccent')}</span>
         </h1>

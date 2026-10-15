@@ -8,9 +8,9 @@ export const tr: Messages = {
   discord: 'Discord',
   menu: 'Menü',
 
-  heroTitle: 'Her siteyi aç',
-  heroAccent: 'hiçbir şey yüklemeden.',
-  heroLead: 'Doğrudan tarayıcında, hesap gerekmez. Siteler seni değil, sunucumuzu görür.',
+  heroTitle: 'Ücretsiz bir VPN,',
+  heroAccent: 'doğrudan tarayıcında.',
+  heroLead: 'Kurulum yok, hesap yok. Siteler seni değil, sunucumuzu görür.',
   urlLabel: 'Site adresi veya arama',
   urlPlaceholder: 'Bir URL gir veya ara',
   go: 'Git',

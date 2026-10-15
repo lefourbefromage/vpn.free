@@ -8,9 +8,9 @@ export const ar: Messages = {
   discord: 'Discord',
   menu: 'القائمة',
 
-  heroTitle: 'افتح أي موقع',
-  heroAccent: 'دون تثبيت أي شيء.',
-  heroLead: 'مباشرة في متصفحك، بلا حساب. ترى المواقع خادمنا، لا أنت.',
+  heroTitle: 'VPN مجاني،',
+  heroAccent: 'مباشرة في متصفحك.',
+  heroLead: 'بلا تثبيت ولا حساب. ترى المواقع خادمنا، لا أنت.',
   urlLabel: 'عنوان الموقع أو البحث',
   urlPlaceholder: 'أدخل رابطًا أو ابحث',
   go: 'انتقال',

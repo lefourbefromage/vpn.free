@@ -8,9 +8,9 @@ export const id: Messages = {
   discord: 'Discord',
   menu: 'Menu',
 
-  heroTitle: 'Buka situs apa pun',
-  heroAccent: 'tanpa memasang apa pun.',
-  heroLead: 'Langsung di browser, tanpa akun. Situs melihat server kami, bukan kamu.',
+  heroTitle: 'VPN gratis,',
+  heroAccent: 'langsung di browser kamu.',
+  heroLead: 'Tanpa instal, tanpa akun. Situs melihat server kami, bukan kamu.',
   urlLabel: 'Alamat situs atau pencarian',
   urlPlaceholder: 'Masukkan URL atau cari',
   go: 'Buka',
